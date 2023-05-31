@@ -28,7 +28,7 @@ class StoreFileRequest extends FormRequest
             'location' => 'required|string',
             'day_estimate' => 'required|integer',
 
-            'user_id' => 'required|integer|exists:users,id',
+            'user_id' => 'required|uuid|exists:users,id',
         ];
     }
 }

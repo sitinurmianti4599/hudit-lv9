@@ -33,7 +33,7 @@ class StoreUserRequest extends FormRequest
             'date_of_birth' => 'required|date|max:256',
             'password' => 'required|string|max:256',
     
-            'role_id' => 'required|integer',
+            'role_id' => 'required|uuid|exists:roles,id',
         ];
     }
 }

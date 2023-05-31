@@ -33,7 +33,7 @@ class UpdateUserRequest extends FormRequest
             'date_of_birth' => 'sometimes|date|max:256',
             'password' => 'sometimes|string|max:256',
     
-            'role_id' => 'sometimes|integer',
+            'role_id' => 'sometimes|uuid|exists:roles,id',
         ];
     }
 }

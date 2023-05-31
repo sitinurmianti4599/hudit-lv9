@@ -27,8 +27,8 @@ class StoreServiceRequest extends FormRequest
             'name' => 'required|string',
             'cost' => 'required|integer',
 
-            'service_type_id' => 'required|integer',
-            'files.*' => 'required|integer',
+            'service_type_id' => 'required|uuid|exists:service_types,id',
+            'files.*' => 'required|uuid',
         ];
     }
 }
