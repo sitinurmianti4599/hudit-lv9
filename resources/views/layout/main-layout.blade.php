@@ -78,7 +78,7 @@
                       <li><a href="pelanggan">Hukum Perorangan</a></li>
                      </ul>
                   </li>
-                  <li><a href="data-master"><i class="fa fa-table purple_color2"></i> Data Master</a>
+                  <li><a href="{{ route('web.data_master.index') }}"><i class="fa fa-table purple_color2"></i> Data Master</a>
                   </li> 
 
                   <li><a href="laporan"><i class="fa fa-bar-chart-o green_color"></i><span>Laporan</span></a></li>
