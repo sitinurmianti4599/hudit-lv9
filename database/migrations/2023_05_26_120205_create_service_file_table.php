@@ -14,11 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('service_file', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-
-            $table->foreignId('service_id')->constrained('services')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('file_id')->constrained('files')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('service_id')->constrained('services')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('file_id')->constrained('files')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

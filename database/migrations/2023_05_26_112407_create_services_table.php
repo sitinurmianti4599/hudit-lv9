@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('services', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->timestamps();
 
             $table->string('name');
             $table->integer('cost');
 
-            $table->foreignId('service_type_id')->constrained('service_types')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('service_type_id')->constrained('service_types')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

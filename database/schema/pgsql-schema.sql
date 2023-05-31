@@ -25,38 +25,23 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public.customers (
-    id bigint NOT NULL,
+    id uuid NOT NULL,
     created_at timestamp(0) without time zone,
     updated_at timestamp(0) without time zone,
+    registration uuid NOT NULL,
     photo character varying(255) NOT NULL,
     name character varying(255) NOT NULL,
     address character varying(255) NOT NULL,
     job character varying(255) NOT NULL,
     telp character varying(255) NOT NULL,
     progress integer NOT NULL,
+    status character varying(255) NOT NULL,
     order_date date NOT NULL,
     done_date date,
-    service_id bigint NOT NULL
+    service_id uuid NOT NULL,
+    service_type_id uuid NOT NULL,
+    CONSTRAINT customers_status_check CHECK (((status)::text = ANY ((ARRAY['progress'::character varying, 'done'::character varying])::text[])))
 );
-
-
---
--- Name: customers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.customers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: customers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.customers_id_seq OWNED BY public.customers.id;
 
 
 --
@@ -98,33 +83,14 @@ ALTER SEQUENCE public.failed_jobs_id_seq OWNED BY public.failed_jobs.id;
 --
 
 CREATE TABLE public.files (
-    id bigint NOT NULL,
+    id uuid NOT NULL,
     created_at timestamp(0) without time zone,
     updated_at timestamp(0) without time zone,
     name character varying(255) NOT NULL,
     location character varying(255) NOT NULL,
     day_estimate integer NOT NULL,
-    user_id bigint NOT NULL
+    user_id uuid NOT NULL
 );
-
-
---
--- Name: files_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.files_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.files_id_seq OWNED BY public.files.id;
 
 
 --
@@ -210,29 +176,10 @@ ALTER SEQUENCE public.personal_access_tokens_id_seq OWNED BY public.personal_acc
 --
 
 CREATE TABLE public.reports (
-    id bigint NOT NULL,
+    id uuid NOT NULL,
     created_at timestamp(0) without time zone,
     updated_at timestamp(0) without time zone
 );
-
-
---
--- Name: reports_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.reports_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: reports_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.reports_id_seq OWNED BY public.reports.id;
 
 
 --
@@ -240,7 +187,7 @@ ALTER SEQUENCE public.reports_id_seq OWNED BY public.reports.id;
 --
 
 CREATE TABLE public.roles (
-    id bigint NOT NULL,
+    id uuid NOT NULL,
     created_at timestamp(0) without time zone,
     updated_at timestamp(0) without time zone,
     "position" character varying(56) NOT NULL
@@ -248,54 +195,13 @@ CREATE TABLE public.roles (
 
 
 --
--- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.roles_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.roles_id_seq OWNED BY public.roles.id;
-
-
---
 -- Name: service_file; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.service_file (
-    id bigint NOT NULL,
-    created_at timestamp(0) without time zone,
-    updated_at timestamp(0) without time zone,
-    service_id bigint NOT NULL,
-    file_id bigint NOT NULL
+    service_id uuid NOT NULL,
+    file_id uuid NOT NULL
 );
-
-
---
--- Name: service_file_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.service_file_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: service_file_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.service_file_id_seq OWNED BY public.service_file.id;
 
 
 --
@@ -303,7 +209,7 @@ ALTER SEQUENCE public.service_file_id_seq OWNED BY public.service_file.id;
 --
 
 CREATE TABLE public.service_types (
-    id bigint NOT NULL,
+    id uuid NOT NULL,
     created_at timestamp(0) without time zone,
     updated_at timestamp(0) without time zone,
     name character varying(255) NOT NULL
@@ -311,55 +217,17 @@ CREATE TABLE public.service_types (
 
 
 --
--- Name: service_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.service_types_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: service_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.service_types_id_seq OWNED BY public.service_types.id;
-
-
---
 -- Name: services; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.services (
-    id bigint NOT NULL,
+    id uuid NOT NULL,
     created_at timestamp(0) without time zone,
     updated_at timestamp(0) without time zone,
     name character varying(255) NOT NULL,
     cost integer NOT NULL,
-    service_type_id bigint NOT NULL
+    service_type_id uuid NOT NULL
 );
-
-
---
--- Name: services_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.services_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: services_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.services_id_seq OWNED BY public.services.id;
 
 
 --
@@ -367,7 +235,7 @@ ALTER SEQUENCE public.services_id_seq OWNED BY public.services.id;
 --
 
 CREATE TABLE public.users (
-    id bigint NOT NULL,
+    id uuid NOT NULL,
     photo character varying(255),
     name character varying(255) NOT NULL,
     fullname character varying(255) NOT NULL,
@@ -380,34 +248,8 @@ CREATE TABLE public.users (
     remember_token character varying(100),
     created_at timestamp(0) without time zone,
     updated_at timestamp(0) without time zone,
-    role_id bigint NOT NULL
+    role_id uuid NOT NULL
 );
-
-
---
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.users_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
-
-
---
--- Name: customers id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.customers ALTER COLUMN id SET DEFAULT nextval('public.customers_id_seq'::regclass);
 
 
 --
@@ -415,13 +257,6 @@ ALTER TABLE ONLY public.customers ALTER COLUMN id SET DEFAULT nextval('public.cu
 --
 
 ALTER TABLE ONLY public.failed_jobs ALTER COLUMN id SET DEFAULT nextval('public.failed_jobs_id_seq'::regclass);
-
-
---
--- Name: files id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.files ALTER COLUMN id SET DEFAULT nextval('public.files_id_seq'::regclass);
 
 
 --
@@ -439,53 +274,19 @@ ALTER TABLE ONLY public.personal_access_tokens ALTER COLUMN id SET DEFAULT nextv
 
 
 --
--- Name: reports id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.reports ALTER COLUMN id SET DEFAULT nextval('public.reports_id_seq'::regclass);
-
-
---
--- Name: roles id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.roles ALTER COLUMN id SET DEFAULT nextval('public.roles_id_seq'::regclass);
-
-
---
--- Name: service_file id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.service_file ALTER COLUMN id SET DEFAULT nextval('public.service_file_id_seq'::regclass);
-
-
---
--- Name: service_types id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.service_types ALTER COLUMN id SET DEFAULT nextval('public.service_types_id_seq'::regclass);
-
-
---
--- Name: services id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.services ALTER COLUMN id SET DEFAULT nextval('public.services_id_seq'::regclass);
-
-
---
--- Name: users id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
-
-
---
 -- Name: customers customers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.customers
     ADD CONSTRAINT customers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: customers customers_registration_unique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.customers
+    ADD CONSTRAINT customers_registration_unique UNIQUE (registration);
 
 
 --
@@ -550,14 +351,6 @@ ALTER TABLE ONLY public.reports
 
 ALTER TABLE ONLY public.roles
     ADD CONSTRAINT roles_pkey PRIMARY KEY (id);
-
-
---
--- Name: service_file service_file_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.service_file
-    ADD CONSTRAINT service_file_pkey PRIMARY KEY (id);
 
 
 --
@@ -631,6 +424,14 @@ ALTER TABLE ONLY public.customers
 
 
 --
+-- Name: customers customers_service_type_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.customers
+    ADD CONSTRAINT customers_service_type_id_foreign FOREIGN KEY (service_type_id) REFERENCES public.service_types(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
 -- Name: files files_user_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -697,17 +498,17 @@ SET row_security = off;
 --
 
 COPY public.migrations (id, migration, batch) FROM stdin;
-23	2014_10_12_000000_create_roles_table	1
-24	2014_10_12_000000_create_users_table	1
-25	2014_10_12_100000_create_password_resets_table	1
-26	2019_08_19_000000_create_failed_jobs_table	1
-27	2019_12_14_000001_create_personal_access_tokens_table	1
-28	2023_05_26_111343_create_service_types_table	1
-29	2023_05_26_111850_create_files_table	1
-30	2023_05_26_112407_create_services_table	1
-31	2023_05_26_112459_create_customers_table	1
-32	2023_05_26_113541_create_reports_table	1
-33	2023_05_26_120205_create_service_file_table	1
+112	2014_10_12_000000_create_roles_table	1
+113	2014_10_12_000000_create_users_table	1
+114	2014_10_12_100000_create_password_resets_table	1
+115	2019_08_19_000000_create_failed_jobs_table	1
+116	2019_12_14_000001_create_personal_access_tokens_table	1
+117	2023_05_26_111343_create_service_types_table	1
+118	2023_05_26_111850_create_files_table	1
+119	2023_05_26_112407_create_services_table	1
+120	2023_05_26_112459_create_customers_table	1
+121	2023_05_26_113541_create_reports_table	1
+122	2023_05_26_120205_create_service_file_table	1
 \.
 
 
@@ -715,7 +516,7 @@ COPY public.migrations (id, migration, batch) FROM stdin;
 -- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.migrations_id_seq', 33, true);
+SELECT pg_catalog.setval('public.migrations_id_seq', 122, true);
 
 
 --

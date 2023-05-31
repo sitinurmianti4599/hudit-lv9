@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('photo')->nullable();
             $table->string('name')->unique();
             $table->string('fullname');
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreignId('role_id')->constrained('roles')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('role_id')->constrained('roles')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

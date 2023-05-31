@@ -2,12 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Customer;
 use App\Models\File;
 use App\Models\Role;
 use App\Models\Service;
 use App\Models\ServiceType;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -83,23 +85,40 @@ class DatabaseSeeder extends Seeder
             'user_id' => $pj_3->id,
         ]);
 
-        Service::factory()->create([
+        $service_1 = Service::factory()->create([
             'name' => 'Pendirian StartUp',
             'cost' => 5_500_000,
 
             'service_type_id' => $service_pbh->id,
-        ])->files()->attach($npwp->id);
-        Service::factory()->create([
+        ]);
+        $service_1->files()->attach($npwp->id);
+        $service_2 = Service::factory()->create([
             'name' => 'Haki',
             'cost' => 2_800_000,
 
             'service_type_id' => $service_khp->id,
-        ])->files()->attach($bpjs->id);
-        Service::factory()->create([
+        ]);
+        $service_2->files()->attach($bpjs->id);
+        $service_3 = Service::factory()->create([
             'name' => 'Surat Perjanjian',
             'cost' => 200_000,
 
             'service_type_id' => $service_khpr->id,
-        ])->files()->attach($sk->id);
+        ]);
+        $service_3->files()->attach($sk->id);
+
+        Customer::factory()
+            ->state(new Sequence(
+                ['service_id' => $service_1->id,],
+                ['service_id' => $service_2->id,],
+                ['service_id' => $service_3->id,],
+            ))
+            ->state(new Sequence(
+                ['service_type_id' => $service_pbh->id,],
+                ['service_type_id' => $service_khp->id,],
+                ['service_type_id' => $service_khpr->id,],
+            ))
+            ->count(30)
+            ->create();
     }
 }

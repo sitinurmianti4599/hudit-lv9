@@ -21,10 +21,6 @@ Route::get('/pelayanan', function () {
     return view('pelayanan');
 });
 
-Route::get('/pelanggan', function () {
-    return view('pelanggan');
-});
-
 Route::get('/detail-pelanggan', function () {
     return view('detail-pelanggan');
 });
@@ -51,6 +47,7 @@ Route::view('/form-profile-edit', 'form-profile-edit');
 
 
 
+Route::get('/pelanggan/{service_type?}', 'CustomerController@index')->name('web.customer.index');
 Route::get('/data-master', 'DataMasterController@index')->name('web.data_master.index');
 
 Route::get('/form-akun-tambah', 'UserController@create')->name('web.user.create');

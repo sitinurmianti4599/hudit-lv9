@@ -49,7 +49,7 @@
                                     <tbody>
                                         @foreach ($users as $user)
                                             <tr>
-                                                <td>{{ $user->id }}</td>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $user->fullname }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
@@ -104,7 +104,7 @@
                                     <tbody>
                                         @foreach ($services as $service)
                                             <tr>
-                                                <td>{{ $service->id }}</td>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $service->name }}</td>
                                                 <td>Rp. {{ $service->cost }}</td>
                                                 <td>{{ $service->type->name }}</td>
@@ -168,7 +168,7 @@
                                     <tbody>
                                         @foreach ($files as $file)
                                             <tr>
-                                                <td>{{ $file->id }}</td>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $file->name }}</td>
                                                 <td>{{ $file->location }}</td>
                                                 <td>{{ $file->day_estimate }}</td>
