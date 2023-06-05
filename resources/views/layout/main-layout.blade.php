@@ -64,8 +64,8 @@
                                     class="rounded-circle img-responsive profile_img w-50 mt-4 ms-4">
                             </div>
                             <div class="profile_info user_info">
-                                <h6>John Doe</h6>
-                                <p>Admin</p>
+                                <h6>{{ auth()->user()->name }}</h6>
+                                <p>{{ auth()->user()->role->position }}</p>
                             </div>
                         </div>
                         <!-- /menu profile quick info -->
@@ -93,12 +93,15 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="{{ route('web.data_master.index') }}"><i
-                                                class="fa fa-table purple_color2"></i> Data Master</a>
-                                    </li>
+                                    @can('data_master_show', auth()->user())
+                                        <li><a href="{{ route('web.data_master.index') }}"><i
+                                                    class="fa fa-table purple_color2"></i> Data Master</a>
+                                        </li>
+                                        <li><a href="{{ route('web.report') }}"><i
+                                                    class="fa fa-bar-chart-o green_color"></i><span>Laporan</span></a>
+                                        </li>
+                                    @endcan
 
-                                    <li><a href="laporan"><i
-                                                class="fa fa-bar-chart-o green_color"></i><span>Laporan</span></a></li>
                                 </ul>
                             </div>
 
@@ -120,14 +123,17 @@
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false"
                                     style="color: #fff;">
-                                    <img src="/assets/images/user.png" alt=""><b style="color: #fff;">John
-                                        Doe</b>
+                                    <img src="/assets/images/user.png" alt=""><b style="color: #fff;">
+                                        {{ auth()->user()->name }}
+                                    </b>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-usermenu pull-right mt-3"
                                     aria-labelledby="navbarDropdown" style="background:rgba(1, 2, 22, 0.863); ">
-                                    <a class="dropdown-item text-light fw-bold" href="/profil"> Profile</a>
-                                    <a class="dropdown-item text-light fw-bold" href="/login"><i
+                                    <a class="dropdown-item text-light fw-bold"
+                                        href="{{ route('web.profile.show') }}"> Profile</a>
+                                    <a class="dropdown-item text-light fw-bold"
+                                        href="{{ route('web.logout.perform') }}"><i
                                             class="fa fa-sign-out pull-right"></i> Log Out</a>
                                 </div>
                             </li>

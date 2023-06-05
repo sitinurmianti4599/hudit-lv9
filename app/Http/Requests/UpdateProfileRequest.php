@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateUserRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,15 +25,15 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'photo' => 'nullable|image|max:2048',
-            'name' => 'required|string|max:256|unique:users,name,'.request()->route('user')->id,
+            'name' => 'required|string|max:256|unique:users,name,'.auth()->user()->id,
             'fullname' => 'required|string|max:256',
-            'telp' => 'required|string|max:256|unique:users,name,'.request()->route('user')->id,
-            'email' => 'required|email|max:256|unique:users,name,'.request()->route('user')->id,
+            'telp' => 'required|string|max:256|unique:users,name,'.auth()->user()->id,
+            'email' => 'required|email|max:256|unique:users,name,'.auth()->user()->id,
             'address' => 'required|string|max:256',
             'date_of_birth' => 'required|date|max:256',
-            'password' => 'nullable|string|max:256',
+            // 'password' => 'nullable|string|max:256',
     
-            'role_id' => 'required|uuid|exists:roles,id',
+            // 'role_id' => 'sometimes|uuid|exists:roles,id',
         ];
     }
 }

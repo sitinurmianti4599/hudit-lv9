@@ -13,7 +13,7 @@ class StoreCustomerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class StoreCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'photo' => 'nullable|image|size:4096',
+            'name' => 'required|string',
+            'address' => 'required|string',
+            'job' => 'required|string',
+            'telp' => 'required|string',
+            'progress' => 'nullable|integer|min:0|max:100',
+            'status' => 'nullable|in:pending,progress,done',
+            'order_date' => 'nullable|date',
+            'done_date' => 'nullable|date',
+            'service_id' => 'nullable|uuid|exists:services,id',
+            // 'service_type_id' => 'nullable|image|size:4096',
         ];
     }
 }

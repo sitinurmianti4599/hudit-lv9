@@ -26,4 +26,8 @@ class File extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function submissions()
+    {
+        return $this->hasMany(Submission::class);
+    }
 }

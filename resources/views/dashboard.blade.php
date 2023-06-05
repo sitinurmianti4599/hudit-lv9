@@ -21,7 +21,7 @@
                </div>
                <div class="counter_no">
                   <div>
-                     <p class="total_no">250</p>
+                     <p class="total_no">{{ $customer }}</p>
                      <p class="head_couter">Pelanggan</p>
                   </div>
                </div>
@@ -36,7 +36,7 @@
                </div>
                <div class="counter_no">
                   <div>
-                     <p class="total_no">20</p>
+                     <p class="total_no">{{ $in_progress }}</p>
                      <p class="head_couter">Di Proses</p>
                   </div>
                </div>
@@ -51,7 +51,7 @@
                </div>
                <div class="counter_no">
                   <div>
-                     <p class="total_no">50</p>
+                     <p class="total_no">{{ $in_done }}</p>
                      <p class="head_couter">Selesai</p>
                   </div>
                </div>

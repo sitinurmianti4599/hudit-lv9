@@ -5,13 +5,38 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Uuid;
 
 class Customer extends Model
 {
     use HasFactory, HasUuids;
 
+    protected static function booted(): void
+    {
+        parent::boot();
+        static::creating(function (Customer $customer) {
+            $customer->registration = Uuid::uuid4();
+            $customer->service_type_id = Service::find($customer->service_id)->type->id;
+        });
+        static::created(function (Customer $customer) {
+            /** @var Service */
+            $service = Service::find($customer->service_id);
+            foreach ($service->files()->get() as $file) {
+                Submission::create([
+                    'customer_id' => $customer->id,
+                    'file_id' => $file->id,
+                ]);
+            }
+        });
+        // static::updating(function (Customer $customer) {
+        //     /** @var Customer */
+        //     $old = Customer::find($customer->id);
+        //     if ($old->id == $customer->id) return;
+        // });
+    }
+
     protected $fillable = [
-        'registration',
+        // 'registration',
         'photo',
         'name',
         'address',
@@ -28,5 +53,13 @@ class Customer extends Model
     public function service()
     {
         return $this->belongsTo(Service::class);
+    }
+    public function service_type()
+    {
+        return $this->belongsTo(ServiceType::class);
+    }
+    public function submissions()
+    {
+        return $this->hasMany(Submission::class);
     }
 }

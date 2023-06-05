@@ -16,7 +16,7 @@
             <div class="x_panel">
                 <div class="x_content">
                     <strong>PELANGGAN - PENDIRIAN BADAN USAHA</strong>
-                    <a href="/form-pelanggan-tambah"><button type="button" class="btn btn-outline-secondary mb-2"
+                    <a href="{{ route('web.customer.create') }}"><button type="button" class="btn btn-outline-secondary mb-2"
                             style="float: right">Tambah Data + </button></a>
                     <br><br>
                     <div class="card-box table-responsive">
@@ -32,7 +32,6 @@
                                     <th class="column-title col-3">Progress</th>
                                     <th class="column-title">Status</th>
                                     <th class="column-title">Action</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,9 +51,10 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td><span class="text-warning fs-6 fw-bold">{{ $customer->status }}</span></td>
+                                        <td><span class="text-info fs-6 fw-bold">{{ $customer->status }}</span></td>
 
-                                        <td class=" "><a href="detail-pelanggan"
+                                        <td class=" "><a
+                                                href="{{ route('web.customer.show', ['customer' => $customer]) }}"
                                                 class="btn btn-outline-info p-1 fw-bold">View</a>
                                         </td>
                                     </tr>

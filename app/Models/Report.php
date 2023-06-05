@@ -9,4 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 class Report extends Model
 {
     use HasFactory, HasUuids;
+
+    protected $fillable = [
+        "registration",
+
+        'name',
+        'address',
+        'job',
+        'telp',
+        'service',
+        'service_type',
+        'order_date',
+        'done_date',
+    ];
 }

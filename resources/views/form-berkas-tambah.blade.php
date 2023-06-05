@@ -39,7 +39,7 @@
                                     <option value="" selected disabled>Pilih PJ</option>
                                     @foreach ($users as $user)
                                         <option @selected(old('user_id') == $user->id) value="{{ $user->id }}">
-                                            {{ $user->name }}</option>
+                                            {{ $user->fullname }}</option>
                                     @endforeach
                                 </select>
                             </div>

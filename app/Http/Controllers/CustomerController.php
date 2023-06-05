@@ -8,25 +8,24 @@ use App\Models\Customer;
 use App\Models\Service;
 use App\Models\ServiceType;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Uuid;
 
 class CustomerController extends Controller
 {
-    public function index(ServiceType|null $service_type)
+    public function index(Request $request)
     {
-        $customers = [];
-        if ($service_type->id) {
-            $customers = Customer::where('service_type_id', $service_type->id)->get();
-        } else {
-            $customers = Customer::all();
+        $query = Customer::query();
+        $service_type_id = $request->query('service_type');
+        if ($service_type_id) {
+            $query = $query->where('service_type_id', $service_type_id);
         }
         return view('pelanggan', [
-            'customers' => $customers,
+            'customers' => $query->orderBy('name', 'asc')->get(),
         ]);
     }
     public function create()
     {
-        return view('form-berkas-tambah', [
-            'services' => Service::all(),
+        return view('form-pelanggan-tambah', [
             'service_types' => ServiceType::all(),
         ]);
     }
@@ -34,32 +33,36 @@ class CustomerController extends Controller
     {
         $data = $request->validated();
         /** @var Customer */
-        $file = Customer::create($data);
+        $customer = Customer::create($data);
 
-        return to_route('web.data_master.index');
+        return to_route('web.customer.index');
     }
-    public function show(Customer $file)
+    public function show(Customer $customer)
     {
-        //
-    }
-    public function edit(Customer $file)
-    {
-        return view('form-berkas-edit', [
-            'file' => $file,
+        return view('detail-pelanggan', [
+            'customer' => $customer,
         ]);
     }
-    public function update(UpdateCustomerRequest $request, Customer $file)
+    public function edit(Customer $customer)
+    {
+        return view('form-pelanggan-edit', [
+            'customer' => $customer,
+            'service_types' => ServiceType::all(),
+        ]);
+    }
+    public function update(UpdateCustomerRequest $request, Customer $customer)
     {
         $data = $request->validated();
-        /** @var Customer */
-        $file->update($data);
-
-        return to_route('web.data_master.index');
+        if ($customer->service_id != $data['service_id']) {
+            return back()->withErrors(['service_id' => 'cannot change']);
+        }
+        $customer->update($data);
+        return to_route('web.customer.index');
     }
-    public function destroy(Customer $file)
+    public function destroy(Customer $customer)
     {
-        $file->delete();
+        $customer->delete();
 
-        return to_route('web.data_master.index');
+        return to_route('web.customer.index');
     }
 }
