@@ -44,7 +44,7 @@
 <body class="nav-md">
     <div class="container body ">
         <div class="main_container">
-            <div class="navbar-static-top left_col2">
+            <div class="navbar-static-top left_col2" style="background: transparent; z-index: 10;">
                 <div class="col-md-3 left_col ">
                     <div class="left_col scroll-view ">
 
@@ -76,20 +76,25 @@
                         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu ">
                             <div class="menu_section">
                                 <ul class="nav side-menu">
-                                    <li><a href="/"><i class="fa fa-dashboard yellow_color"></i> Dashboard</a>
+                                    <li><a href="{{ route('web.dashboard') }}"><i
+                                                class="fa fa-dashboard yellow_color"></i> Dashboard</a>
                                     </li>
-                                    <li class="{{ request()->url() == route('web.customer.index') ? 'active' : '' }}">
-                                        <a href="{{ route('web.customer.index') }}">
+                                    <li class="{{ url()->full() == route('web.customer.service') ? 'active' : '' }}">
+                                        <a href="{{ route('web.customer.service') }}" data-click-prevent="false">
                                             <i class="fa fa-object-group blue2_color"></i>Pelayanan
                                             <span class="fa fa-chevron-down"></span>
                                         </a>
                                         <ul class="nav child_menu"
-                                            style="{{ request()->url() == route('web.customer.index') ? 'display: block;' : '' }}">
+                                            style="{{ url()->full() == route('web.customer.service') || str(url()->full())->startsWith(route('web.customer.index')) ? 'display: block;' : '' }}">
                                             @foreach ($ServiceType::all() as $type)
-                                                <li><a
-                                                        href="{{ route('web.customer.index', ['service_type' => $type]) }}">
+                                                @php
+                                                    $link = route('web.customer.index', ['service_type' => $type]);
+                                                @endphp
+                                                <li class="{{ url()->full() == $link ? 'active' : '' }}">
+                                                    <a href="{{ $link }}">
                                                         {{ $type->name }}
-                                                    </a></li>
+                                                    </a>
+                                                </li>
                                             @endforeach
                                         </ul>
                                     </li>
@@ -199,6 +204,15 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
     </script>
 
+    <script>
+        addEventListener('load', () => {
+            document.querySelectorAll('[data-click-prevent="true"]').forEach((elm) => {
+                elm.addEventListener('click', (ev) => {
+                    ev.preventDefault()
+                })
+            })
+        })
+    </script>
 </body>
 
 </html>
