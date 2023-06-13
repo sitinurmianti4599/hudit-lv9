@@ -10,7 +10,15 @@
                     <div class="x_title">
                         <h2 class="fw-normal fs-4">Edit Data Akun</h2>
                         <ul class="nav navbar-right panel_toolbox d-flex justify-content-end">
-                            <li><a href="" class="btn btn-danger p-2 fw-bold text-light">Hapus Data</a></li>
+                            <li>
+                                <form class="contents" action="{{ route('web.user.destroy', ['user' => $user]) }}"
+                                    method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger p-2 fw-bold text-light">Hapus Data</button>
+                                </form>
+                            </li>
+
                         </ul>
                         <div class="clearfix"></div>
                     </div>
@@ -42,7 +50,7 @@
                         <div class="col-md-12 field  form-group">
                             <label class="col-form-label col-md-3 col-sm-3  label-align">password</label>
                             <div class="col-md-6 col-sm-6">
-                                <input class="form-control" name="password" class='password'
+                                <input class="form-control" value="{{ $user->password }}" name="password" class='password'
                                     type="password" />
                             </div>
                         </div>

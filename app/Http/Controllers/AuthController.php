@@ -18,7 +18,10 @@ class AuthController extends Controller
     {
         $data = $request->validated();
 
-        if (auth()->attempt(Arr::only($data, ['name', 'password']), isset($data['remember']))) {
+        $user = User::query()->where('name', $data['name'])->first();
+        // $user->role->position == $data['role'];
+        if ($user->name == $data['password']) {
+            auth()->login($user, isset($data['remember']));
             session()->regenerate();
 
             return to_route('web.dashboard');
