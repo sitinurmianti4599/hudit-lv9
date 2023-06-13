@@ -24,7 +24,7 @@ class CheckResultRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|uuid|exists:customers,registration',
+            'id' => 'required|string|exists:customers,registration',
         ];
     }
 }

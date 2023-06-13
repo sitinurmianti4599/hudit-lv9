@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('location');
             $table->integer('day_estimate');
 
-            $table->foreignUuid('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignUuid('user_id')->constrained('users')->restrictOnUpdate()->restrictOnDelete();
         });
     }
 

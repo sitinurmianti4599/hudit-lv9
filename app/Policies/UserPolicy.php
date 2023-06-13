@@ -27,7 +27,10 @@ class UserPolicy
     }
     public function delete(User $user, User $model)
     {
-        //
+        if ($user->name == $model->name) {
+            return false;
+        }
+        return true;
     }
     public function restore(User $user, User $model)
     {
