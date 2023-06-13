@@ -33,7 +33,8 @@
                                             <tr>
                                                 <td class="text-white">{{ $customer->name }}</td>
                                                 <td class="text-white">
-                                                    <span class="text-warning fw-bold">
+                                                    <span
+                                                        class="fw-bold {{ $customer->status == 'done' ? 'text-success' : 'text-info' }}">
                                                         {{ $customer->status }}
                                                     </span>
                                                 </td>
@@ -48,38 +49,12 @@
                                         <h2>Progress</h2>
                                         <center>
 
-                                            <div class="progress-stacked w-75">
-                                                <div class="progress" role="progressbar"
-                                                    aria-label="Animated striped example Segment one" aria-valuenow="15"
-                                                    aria-valuemin="0" aria-valuemax="100" style="width: 25%">
-                                                    <div
-                                                        class="progress-bar progress-bar-striped progress-bar-animated bg-danger  fw-bold">
-                                                        25%</div>
-                                                </div>
-                                                <div class="progress" role="progressbar"
-                                                    aria-label="Animated striped example Segment two" aria-valuenow="30"
-                                                    aria-valuemin="0" aria-valuemax="100" style="width: 25%">
-                                                    <div
-                                                        class="progress-bar progress-bar-striped progress-bar-animated bg-warning  fw-bold">
-                                                        25%</div>
-
-                                                </div>
-                                                <div class="progress" role="progressbar"
-                                                    aria-label="Animated striped example Segment three" aria-valuenow="20"
-                                                    aria-valuemin="0" aria-valuemax="100" style="width: 25%">
-                                                    <div
-                                                        class="progress-bar progress-bar-striped progress-bar-animated bg-info   fw-bold">
-                                                        25%</div>
-
-                                                </div>
-                                            </div>
-
-
                                             <div class="progress w-75 mt-4 mb-3" role="progressbar"
                                                 aria-label="Animated striped example" aria-valuenow="50" aria-valuemin="0"
                                                 aria-valuemax="100" style="border-radius: 20px;">
                                                 <div class="progress-bar progress-bar-striped progress-bar-animated bg-success fw-bold"
-                                                    style="width: {{ $customer->progress }}%;">{{ $customer->progress }}%</div>
+                                                    style="width: {{ $customer->progress }}%;">{{ $customer->progress }}%
+                                                </div>
                                             </div>
 
                                         </center>
@@ -90,9 +65,25 @@
                                             <div class="ms-5 mb-2">
                                                 <ul class="ms-5 fw-bold text-light" style="list-style: disc;">
                                                     @foreach ($customer->submissions as $submission)
-                                                        <li>{{ $submission->file->name }} : <span
-                                                                class="text-primary fs-6 fw-bolder ">
-                                                                {{ $submission->status }}</span></li>
+                                                        <li>
+                                                            <span>
+                                                                {{ $submission->file->name }}
+                                                            </span>
+                                                            <span> : </span>
+                                                            @if ($submission->status == 'pending')
+                                                                <span class="text-warning fs-6 fw-bold">
+                                                                    {{ $submission->status }}
+                                                                </span>
+                                                            @elseif ($submission->status == 'progress')
+                                                                <span class="text-info fs-6 fw-bold">
+                                                                    {{ $submission->status }}
+                                                                </span>
+                                                            @elseif ($submission->status == 'done')
+                                                                <span class="text-success fs-6 fw-bold">
+                                                                    {{ $submission->status }}
+                                                                </span>
+                                                            @endif
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
