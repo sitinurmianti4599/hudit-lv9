@@ -34,7 +34,7 @@
                     style="background-color: #030d1a; border-radius:20px; color:yellow;">
                     <center><img src="/assets/images/logohd.png" alt="..."
                             class=" img-responsive profile_img w-100 mt-4 ms-4"></center>
-                    <form>
+                    <div>
                         <h1>Welcome</h1>
                         <div>
                             <a class="btn btn-warning submit w-100 mb-3 p-1" href="#signup" class="to_register">
@@ -51,7 +51,7 @@
 
                         <div class="separator">
                         </div>
-                    </form>
+                    </div>
                 </section>
             </div>
 
