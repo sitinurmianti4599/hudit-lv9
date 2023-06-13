@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
 
 class Customer extends Model
@@ -15,8 +16,9 @@ class Customer extends Model
     {
         parent::boot();
         static::creating(function (Customer $customer) {
-            $customer->registration = Uuid::uuid4();
-            $customer->service_type_id = Service::find($customer->service_id)->type->id;
+            $service_type = Service::find($customer->service_id)->type;
+            $customer->registration = "{$service_type->code}-". Str::random(6);
+            $customer->service_type_id = $service_type->id;
         });
         static::created(function (Customer $customer) {
             /** @var Service */

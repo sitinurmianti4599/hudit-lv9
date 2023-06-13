@@ -55,12 +55,15 @@ class DatabaseSeeder extends Seeder
 
         $service_pbh = ServiceType::factory()->create([
             'name' => 'Pendirian Badan Hukum',
+            'code' => 'PBU',
         ]);
         $service_khp = ServiceType::factory()->create([
             'name' => 'Keperluan Hukum Perusahaan',
+            'code' => 'KHPh',
         ]);
         $service_khpr = ServiceType::factory()->create([
             'name' => 'Keperluan Hukum Perorangan',
+            'code' => 'KHPg',
         ]);
 
         $npwp = File::factory()->create([

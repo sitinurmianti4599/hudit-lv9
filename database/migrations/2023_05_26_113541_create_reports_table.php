@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->timestamps();
 
-            $table->uuid("registration");
+            $table->string("registration");
 
             $table->string('name');
             $table->string('address');

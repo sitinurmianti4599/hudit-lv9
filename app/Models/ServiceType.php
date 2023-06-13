@@ -12,6 +12,7 @@ class ServiceType extends Model
 
     protected $fillable = [
         'name',
+        'code',
     ];
 
     public function services()

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->timestamps();
 
-            $table->uuid("registration")->unique()->index();
+            $table->string("registration")->unique()->index();
 
             $table->string('photo')->nullable();
             $table->string('name');
