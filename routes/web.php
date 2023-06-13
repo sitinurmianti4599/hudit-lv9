@@ -14,15 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/laporan', function () {
-    return view('laporan');
-});
-
-
-Route::view('/tes', 'tes');
-
-
-
 Route::middleware('guest')->group(function () {
     Route::get('/login', 'AuthController@login_show')->name('web.login.show');
     Route::post('/login', 'AuthController@login_perfom')->name('web.login.perform');
@@ -34,13 +25,14 @@ Route::post('/result', 'TrackController@result')->name('web.track.result');
 Route::middleware('auth')->group(function () {
     Route::get('/', 'DashboardController')->name('web.dashboard');
     Route::get('/laporan', 'ReportController')->name('web.report');
-    
+
     Route::get('/profile', 'AuthController@profile')->name('web.profile.show');
     Route::get('/profile/edit', 'AuthController@profile_edit')->name('web.profile.edit');
     Route::patch('/profile/edit', 'AuthController@profile_update')->name('web.profile.update');
     Route::get('/logout', 'AuthController@logout_perfom')->name('web.logout.perform');
 
     Route::get('/pelanggan', 'CustomerController@index')->name('web.customer.index');
+    Route::get('/pelayanan', 'CustomerController@service')->name('web.customer.service');
     Route::get('/pelanggan/buat', 'CustomerController@create')->name('web.customer.create');
     Route::get('/pelanggan/{customer}', 'CustomerController@show')->name('web.customer.show');
     Route::get('/pelanggan/{customer}/edit', 'CustomerController@edit')->name('web.customer.edit');

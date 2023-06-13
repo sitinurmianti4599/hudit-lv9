@@ -19,8 +19,26 @@ class CustomerController extends Controller
         if ($service_type_id) {
             $query = $query->where('service_type_id', $service_type_id);
         }
+        if (auth()->user()->role->position == 'person_responsible') {
+            $query = $query->whereNot('status', 'done');
+        }
         return view('pelanggan', [
-            'customers' => $query->orderBy('name', 'asc')->get(),
+            'customers' => $query->get(),
+        ]);
+    }
+    public function service(Request $request)
+    {
+        $service_types = ServiceType::all();
+        $stats = [];
+        foreach ($service_types as $service_type) {
+            $stat = new \stdClass();
+            $stat->name = $service_type->name;
+            $stat->count = Customer::query()->where('service_type_id', $service_type->id)->count();
+            $stats[] = $stat;
+        }
+        return view('pelayanan', [
+            'stats' => $stats,
+            'customers' => Customer::all(),
         ]);
     }
     public function create()

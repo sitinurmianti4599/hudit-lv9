@@ -2,239 +2,87 @@
 @section('title', 'Layanan')
 
 @section('konten')
-<div class="midde_cont" >
-   <div class="container-fluid">
-    <div class="row column_title mt-5 m-1 p-1">
-      <div class="col-md-12">
-         <div class="page_title mt-4">
-               <h2>Pelayanan</h2>
+    <div class="midde_cont">
+        <div class="container-fluid">
+            <div class="row column_title mt-5 m-1 p-1">
+                <div class="col-md-12">
+                    <div class="page_title mt-4">
+                        <h2>Pelayanan</h2>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      <div class="row column1">
-         <div class="col-md-8 col-lg-4">
-            <div class="full counter_section margin_bottom_30">
-               <div class="couter_icon">
-                  <div class="pbu"> 
-                     <img src="assets/images/BD.png" alt="" >
-                  </div>
-               </div>
-               <div class="counter_no">                
-                  <div>
-                     <p class="total_no">10</p>
-                     <p class="head_couter2">Pendirian Badan Usaha</p>
-                  </div>
-               </div>
+            <div class="row column1">
+                @foreach ($stats as $stat)
+                    <div class="col-md-8 col-lg-4">
+                        <div class="full counter_section margin_bottom_30">
+                            <div class="couter_icon">
+                                <div class="pbu">
+                                    <img src="assets/images/BD.png" alt="">
+                                </div>
+                            </div>
+                            <div class="counter_no">
+                                <div>
+                                    <p class="total_no">{{ $stat->count }}</p>
+                                    <p class="head_couter2">{{ $stat->name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-         </div>
-         <div class="col-md-8 col-lg-4">
-            <div class="full counter_section margin_bottom_30">
-               <div class="couter_icon">
-                  <div> 
-                    <img src="assets/images/HP1.png" alt="" >
-
-                  </div>
-               </div>
-               <div class="counter_no">
-                  <div>
-                     <p class="total_no">5</p>
-                     <p class="head_couter"> Hukum Perusahaan</p>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="col-md-8 col-lg-4">
-            <div class="full counter_section margin_bottom_30">
-               <div class="couter_icon">
-                  <div> 
-                    <img src="assets/images/HP.png" alt="" >
-                  </div>
-               </div>
-               <div class="counter_no">
-                  <div>
-                     <p class="total_no">5</p>
-                     <p class="head_couter"> Hukum Perorangan</p>
-                  </div>
-               </div>
-            </div>
-         </div>  
-
-       </div>
-      </div>
-
-      {{-- tabel selesai --}}
-    <div class="col-md-12 col-sm-12 ">
-      <div class="x_panel">
-        <div class="x_title">
-          <h2>Selesai</h2>
-          <ul class="nav navbar-right panel_toolbox d-flex justify-content-end">
-            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-          </ul>
-          <div class="clearfix"></div>
         </div>
-        <div class="x_content">
-         <div class="row ">
-          <div class="col-sm-12">
-           <div class="card-box table-responsive">
-              <table id="datatable" class="table table-striped table-bordered fs-6 text-center" style="width:100%">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>No Reg</th>
-                    <th>Layanan</th>
-                    <th>Jenis Layanan</th>
-                    <th>Tgl Order</th>
-                    <th>Tgl Selesai</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Ashton Cox</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009/01/12</td>
-                    <td>$86,000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Cedric Kelly</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2012/03/29</td>
-                    <td>$433,060</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                    <td>2008/11/28</td>
-                    <td>$162,700</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Brielle Williamson</td>
-                    <td>Integration Specialist</td>
-                    <td>New York</td>
-                    <td>61</td>
-                    <td>2012/12/02</td>
-                    <td>$372,000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Herrod Chandler</td>
-                    <td>Sales Assistant</td>
-                    <td>San Francisco</td>
-                    <td>59</td>
-                    <td>2012/08/06</td>
-                    <td>$137,500</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Rhona Davidson</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>2010/10/14</td>
-                    <td>$327,900</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Colleen Hurst</td>
-                    <td>Javascript Developer</td>
-                    <td>San Francisco</td>
-                    <td>39</td>
-                    <td>2009/09/15</td>
-                    <td>$205,500</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Sonya Frost</td>
-                    <td>Software Engineer</td>
-                    <td>Edinburgh</td>
-                    <td>23</td>
-                    <td>2008/12/13</td>
-                    <td>$103,600</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Jena Gaines</td>
-                    <td>Office Manager</td>
-                    <td>London</td>
-                    <td>30</td>
-                    <td>2008/12/19</td>
-                    <td>$90,560</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Quinn Flynn</td>
-                    <td>Support Lead</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2013/03/03</td>
-                    <td>$342,000</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Charde Marshall</td>
-                    <td>Regional Director</td>
-                    <td>San Francisco</td>
-                    <td>36</td>
-                    <td>2008/10/16</td>
-                    <td>$470,600</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Haley Kennedy</td>
-                    <td>Senior Marketing Designer</td>
-                    <td>London</td>
-                    <td>43</td>
-                    <td>2012/12/18</td>
-                    <td>$313,500</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Tatyana Fitzpatrick</td>
-                    <td>Regional Director</td>
-                    <td>London</td>
-                    <td>19</td>
-                    <td>2010/03/17</td>
-                    <td>$385,750</td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
-      </div>
-    </div>
-    </div>
-</div>
-</div>
 
-   
-</div>
-       
+        {{-- tabel selesai --}}
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Selesai</h2>
+                    <ul class="nav navbar-right panel_toolbox d-flex justify-content-end">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row ">
+                        <div class="col-sm-12">
+                            <div class="card-box table-responsive">
+                                <table id="datatable" class="table table-striped table-bordered fs-6 text-center"
+                                    style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Name</th>
+                                            <th>No Reg</th>
+                                            <th>Layanan</th>
+                                            <th>Jenis Layanan</th>
+                                            <th>Tgl Order</th>
+                                            <th>Tgl Selesai</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($customers as $customer)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $customer->name }}</td>
+                                                <td>{{ $customer->registration }}</td>
+                                                <td>{{ $customer->service->name }}</td>
+                                                <td>{{ $customer->service_type->name }}</td>
+                                                <td>{{ date('d M Y', strtotime($customer->order_date)) }}</td>
+                                                <td>{{ $customer->done_date ?? date('d M Y', strtotime($customer->order_date)) }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
 
 @endsection
