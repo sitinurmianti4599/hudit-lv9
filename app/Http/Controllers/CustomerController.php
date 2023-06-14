@@ -23,6 +23,7 @@ class CustomerController extends Controller
             $query = $query->whereNot('status', 'done');
         }
         return view('pelanggan', [
+            'service_type' => ServiceType::find($service_type_id),
             'customers' => $query->get(),
         ]);
     }

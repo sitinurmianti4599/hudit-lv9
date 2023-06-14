@@ -44,78 +44,76 @@
 <body class="nav-md">
     <div class="container body ">
         <div class="main_container">
-            <div class="navbar-static-top left_col2" style="background: transparent; z-index: 10;">
-                <div class="col-md-3 left_col ">
-                    <div class="left_col scroll-view ">
+            <div class="navbar-static-top left_col2" style="background: transparent;"></div>
+            <div class="col-md-3 left_col" style="position: fixed; top: 0; height: 100vh">
+                <div class="left_col scroll-view ">
 
-                        <div class="navbar nav_title logo_section " style="border: 0; ">
+                    <div class="navbar nav_title logo_section " style="border: 0; ">
 
-                            <a href="/" class="site_title"><img class="logo_icon img-responsive me-3 "
-                                    src="/assets/images/logo.png" alt="#" /><b> Hukum Digital</b></a>
-                            <div style="border: 1px solid yellow; width:100%; margin-top:2px;"></div>
-                        </div>
-
-                        <div class="clearfix"></div>
-
-                        <!-- menu profile quick info -->
-                        <div class="profile clearfix">
-                            <div class="profile_pic user_img">
-                                <img src="/assets/images/user.png" alt="..."
-                                    class="rounded-circle img-responsive profile_img w-50 mt-4 ms-4">
-                            </div>
-                            <div class="profile_info user_info">
-                                <h6>{{ auth()->user()->name }}</h6>
-                                <p>{{ auth()->user()->role->position }}</p>
-                            </div>
-                        </div>
-                        <!-- /menu profile quick info -->
-
-                        <br />
-
-                        <!-- sidebar menu -->
-                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu ">
-                            <div class="menu_section">
-                                <ul class="nav side-menu">
-                                    <li><a href="{{ route('web.dashboard') }}"><i
-                                                class="fa fa-dashboard yellow_color"></i> Dashboard</a>
-                                    </li>
-                                    <li class="{{ url()->full() == route('web.customer.service') ? 'active' : '' }}">
-                                        <a href="{{ route('web.customer.service') }}" data-click-prevent="false">
-                                            <i class="fa fa-object-group blue2_color"></i>Pelayanan
-                                            <span class="fa fa-chevron-down"></span>
-                                        </a>
-                                        <ul class="nav child_menu"
-                                            style="{{ url()->full() == route('web.customer.service') || str(url()->full())->startsWith(route('web.customer.index')) ? 'display: block;' : '' }}">
-                                            @foreach ($ServiceType::all() as $type)
-                                                @php
-                                                    $link = route('web.customer.index', ['service_type' => $type]);
-                                                @endphp
-                                                <li class="{{ url()->full() == $link ? 'active' : '' }}">
-                                                    <a href="{{ $link }}">
-                                                        {{ $type->name }}
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </li>
-                                    @can('data_master_show', auth()->user())
-                                        <li><a href="{{ route('web.data_master.index') }}"><i
-                                                    class="fa fa-table purple_color2"></i> Data Master</a>
-                                        </li>
-                                        <li><a href="{{ route('web.report') }}"><i
-                                                    class="fa fa-bar-chart-o green_color"></i><span>Laporan</span></a>
-                                        </li>
-                                    @endcan
-
-                                </ul>
-                            </div>
-
-                        </div>
-                        <!-- /sidebar menu -->
+                        <a href="/" class="site_title"><img class="logo_icon img-responsive me-3 "
+                                src="/assets/images/logo.png" alt="#" /><b> Hukum Digital</b></a>
+                        <div style="border: 1px solid yellow; width:100%; margin-top:2px;"></div>
                     </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic user_img">
+                            <img src="/assets/images/user.png" alt="..."
+                                class="rounded-circle img-responsive profile_img w-50 mt-4 ms-4">
+                        </div>
+                        <div class="profile_info user_info">
+                            <h6>{{ auth()->user()->name }}</h6>
+                            <p>{{ auth()->user()->role->position }}</p>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu ">
+                        <div class="menu_section">
+                            <ul class="nav side-menu">
+                                <li><a href="{{ route('web.dashboard') }}"><i
+                                            class="fa fa-dashboard yellow_color"></i> Dashboard</a>
+                                </li>
+                                <li class="{{ url()->full() == route('web.customer.service') ? 'active' : '' }}">
+                                    <a href="{{ route('web.customer.service') }}" data-click-prevent="false">
+                                        <i class="fa fa-object-group blue2_color"></i>Pelayanan
+                                        <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu"
+                                        style="{{ url()->full() == route('web.customer.service') || str(url()->full())->startsWith(route('web.customer.index')) ? 'display: block;' : '' }}">
+                                        @foreach ($ServiceType::all() as $type)
+                                            @php
+                                                $link = route('web.customer.index', ['service_type' => $type]);
+                                            @endphp
+                                            <li class="{{ url()->full() == $link ? 'active' : '' }}">
+                                                <a href="{{ $link }}">
+                                                    {{ $type->name }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                @can('data_master_show', auth()->user())
+                                    <li><a href="{{ route('web.data_master.index') }}"><i
+                                                class="fa fa-table purple_color2"></i> Data Master</a>
+                                    </li>
+                                    <li><a href="{{ route('web.report') }}"><i
+                                                class="fa fa-bar-chart-o green_color"></i><span>Laporan</span></a>
+                                    </li>
+                                @endcan
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- /sidebar menu -->
                 </div>
             </div>
-
             <!-- top navigation -->
             <div class="top_nav fixed-top">
                 <div class="nav_menu ">

@@ -15,7 +15,7 @@
         <div class="col-md-12 col-sm-12  ">
             <div class="x_panel">
                 <div class="x_content">
-                    <strong>PELANGGAN - PENDIRIAN BADAN USAHA</strong>
+                    <strong class="fs-5" style="text-transform: capitalize;">{{ $service_type->name }}</strong>
                     <a href="{{ route('web.customer.create') }}"><button type="button" class="btn btn-outline-secondary mb-2"
                             style="float: right">Tambah Data + </button></a>
                     <br><br>

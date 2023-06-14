@@ -38,7 +38,7 @@
                                                         {{ $customer->status }}
                                                     </span>
                                                 </td>
-                                                <td class="text-white"> {{ $customer->telp }}</td>
+                                                <td class="text-white"> {{ $customer->registration }}</td>
                                                 <td class="text-white"> {{ $customer->service->name }}</td>
                                                 <td class="text-white">
                                                     {{ date('d M Y', strtotime($customer->order_date)) }}</td>
