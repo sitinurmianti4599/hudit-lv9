@@ -64,7 +64,7 @@
                                 class="rounded-circle img-responsive profile_img w-50 mt-4 ms-4">
                         </div>
                         <div class="profile_info user_info">
-                            <h6>{{ auth()->user()->name }}</h6>
+                            <h6>{{ auth()->user()->fullname }}</h6>
                             <p>{{ auth()->user()->role->position }}</p>
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false"
                                     style="color: #fff;">
                                     <img src="/assets/images/user.png" alt=""><b style="color: #fff;">
-                                        {{ auth()->user()->name }}
+                                        {{ auth()->user()->fullname }}
                                     </b>
                                 </a>
 

@@ -6,11 +6,12 @@
     <div class="profile-card mb-5 mt-5 ">
       <header>
             <img src="assets/images/user.png" alt="" class="img-circle img-fluid">
-        <h1>{{ $user->name }}</h1>
+        <h1>{{ $user->fullname }}</h1>
         <p>{{ $user->role->position }}</p>
       </header>
       <div class="info">
         <h2>Informasi Pribadi</h2>
+        <p>Username : <span>{{ $user->name }}</span></p>
         <p>Tanggal Lahir : <span>{{ date('d M Y', strtotime($user->date_of_birth)) }}</span></p>
         <p>Alamat : <span>{{ $user->address }}</span></p>
       </div>
@@ -21,8 +22,8 @@
         <p>Telp / Wa : <span>{{ $user->telp }}</span></p>
       </div>
       <div class="d-flex justify-content-center">
-        <a href="" class="btn btn-info p-1 fw-bold w-50 position-relative">Ganti Sandi</a>
-        <a href="{{ route('web.profile.edit') }}" class="btn btn-warning p-1 fw-bold w-50 position-relative">Edit</a>
+        <!-- <a href="" class="btn btn-info p-1 fw-bold w-50 position-relative">Ganti Sandi</a> -->
+        <a href="{{ route('web.profile.edit') }}" class="btn btn-warning p-1 fw-bold w-100 position-relative">Edit</a>
       </div>
       
     

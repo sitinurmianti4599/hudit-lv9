@@ -24,45 +24,18 @@
 </head>
 
 <body class="login">
-    <div>
-        <a class="hiddenanchor" id="signup"></a>
-        <a class="hiddenanchor" id="signin"></a>
-
-        <div class="login_wrapper mt-5 me-5">
-            <div class="animate form login_form mt-5 p-4">
-                <section class="card login_content p-4 mt-5"
+   
+        <div class="login_wrapper mt-2 me-5">
+            <div class="animate form login_form mt-5 p-1 ">
+                <section class="card login_content p-4 mt-5 "
                     style="background-color: #030d1a; border-radius:20px; color:yellow;">
                     <center><img src="/assets/images/logohd.png" alt="..."
                             class=" img-responsive profile_img w-100 mt-4 ms-4"></center>
-                    <div>
-                        <h1>Welcome</h1>
-                        <div>
-                            <a class="btn btn-warning submit w-100 mb-3 p-1" href="#signup" class="to_register">
-                                <h6 class="mt-2">Admin</h6>
-                            </a>
-                        </div>
-                        <div>
-                            <a class="btn btn-warning submit w-100 mb-3 p-1" href="#signup" class="to_register">
-                                <h6 class="mt-2">Penanggung Jawab</h6>
-                            </a>
-                        </div>
-
-                        <div class="clearfix"></div>
-
-                        <div class="separator">
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div id="register" class="card animate form registration_form mt-5 p-2 me-2 col-md-12 col-sm-12"
-                style="background-color: #030d1a; color:yellow; border:2px solid yellow; border-radius:20px;">
-                <section class="login_content p-1 ">
                     <form action="{{ route('web.login.perform') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <h1>Login <span>admin</span></h1>
-                        <img src="/assets/images/user.png" alt="..." class="img-circle w-25 h-25 mb-3"
-                            style="border:2px solid yellow">
+                        <h1>Login</h1>
+                        <!-- <img src="/assets/images/user.png" alt="..." class="img-circle w-25 h-25 mb-3"
+                            style="border:2px solid yellow"> -->
 
                         <div class="clear-fix"></div>
                         <div class="col-md-12 col-sm-6 mb-3">
@@ -82,23 +55,12 @@
                         </div>
 
                         <button class="btn btn-warning submit w-50">Log in</button>
-
-                        <div class="clearfix"></div>
-
-                        <div class="separator">
-                            <a href="#signin" class="to_register">
-                                <h5>Kembali</h5>
-                            </a>
-                        </div>
-
                         <x-error-validate />
                     </form>
                 </section>
-
-            </div>
+            </div> 
         </div>
-    </div>
-
+  
 
     <script>
         function hideshow() {
