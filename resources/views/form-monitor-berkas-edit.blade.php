@@ -60,13 +60,13 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 field  form-group">
-                            <label class="col-form-label col-md-3 col-sm-3  label-align">Nama PJ</label>
-                            <div class="col-md-6 col-sm-6">
-                                <input class="form-control" type="text" value="{{ $submission->file->user->fullname }}"
-                                    name="nama-pj" required='required' readonly>
+                            <div class="col-md-12 field  form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align">Nama PJ</label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" type="text" value="{{ $submission->file->user->fullname }}"
+                                        name="nama-pj" required='required' readonly>
+                                </div>
                             </div>
-                        </div>
                         <div class="col-md-12 field  form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="date">
                                 Tgl. Pengajuan

@@ -69,24 +69,33 @@
                                     'is-valid' => session()->has('telp') && !$errors->has('telp'),
                                     'is-invalid' => $errors->has('telp'),
                                 ]) type="telp" id="telp" name="telp"
-                                    value="{{ old('telp', $customer->telp) }}" required>
+                        
+                                value="{{ old('telp', $customer->telp) }}" required>
                                 @error('telp')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                        </div>
+                        </div> 
                         <div class="col-md-12 field  form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="service_id">Layanan</label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" type="text" value="{{$customer->service->name }}"
+                                        name="service_id" readonly>
+                                </div>
+                        </div>
+                        
+                        <!-- <div class="col-md-12 field  form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="service_id">Layanan</label>
                             <div class="col-md-6 col-sm-6">
-                                <select id="service_id" name="service_id" required @class([
+                                <select id="service_id" name="service_id"  required @class([
                                     'form-select',
                                     'is-valid' => session()->has('service_id') && !$errors->has('service_id'),
                                     'is-invalid' => $errors->has('service_id'),
                                 ])>
                                     <option value="" selected disabled>Pilih Layanan</option>
-                                    @foreach ($service_types as $service_type)
+                                    @foreach ($service_types as $service_type) 
                                         <optgroup label="{{ $service_type->name }}">
                                             @foreach ($service_type->services as $service)
                                                 <option @selected(old('service_id', $customer->service_id) == $service->id) value="{{ $service->id }}">
@@ -101,7 +110,7 @@
                                     </div>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-12 field  form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="order_date">
                                 Tgl. Order
