@@ -79,7 +79,7 @@
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
-                                                <th>No reg</th>
+                                                <th>Kode reg</th>
                                                 <th>Nama</th>
                                                 <th>Alamat</th>
                                                 <th>Telp</th>

@@ -52,7 +52,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Name</th>
-                                            <th>No Reg</th>
+                                            <th>Kode Reg</th>
                                             <th>Layanan</th>
                                             <th>Jenis Layanan</th>
                                             <th>Tgl Order</th>

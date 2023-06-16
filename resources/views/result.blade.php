@@ -24,7 +24,7 @@
                                             <tr>
                                                 <th class="text-start">Nama</th>
                                                 <th class="text-start">Status &nbsp;&nbsp;</th>
-                                                <th class="text-start">No Regis &nbsp;&nbsp;</th>
+                                                <th class="text-start">Kode Regis &nbsp;&nbsp;</th>
                                                 <th class="text-start">Layanan &nbsp;&nbsp;</th>
                                                 <th class="text-start">Tgl Order &nbsp;</th>
                                             </tr>

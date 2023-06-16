@@ -26,7 +26,7 @@
                                 <tr class="headings">
                                     <th>No</th>
                                     <th class="column-title">Nama </th>
-                                    <th class="column-title">No. Regis</th>
+                                    <th class="column-title">Kode Regis</th>
                                     <th class="column-title">Layanan </th>
                                     <th class="column-title">Tanggal Order</th>
                                     <th class="column-title col-3">Progress</th>
