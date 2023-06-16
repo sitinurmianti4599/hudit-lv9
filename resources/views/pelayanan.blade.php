@@ -1,6 +1,5 @@
 @extends('layout/main-layout')
 @section('title', 'Layanan')
-
 @section('konten')
     <div class="midde_cont">
         <div class="container-fluid">
@@ -13,22 +12,28 @@
             </div>
             <div class="row column1">
                 @foreach ($stats as $stat)
-                    <div class="col-md-8 col-lg-4">
+                    <div class="col-md-8 col-lg-4" >
                         <div class="full counter_section margin_bottom_30">
                             <div class="couter_icon">
                                 <div class="pbu">
-                                    <img src="assets/images/BD.png" alt="">
+                                @if ($stat->name === "Pendirian Badan Hukum")
+                                 <img src="assets/images/BD.png" class="w-75" alt="">                  
+                                @elseif ($stat->name === "Keperluan Hukum Perusahaan")
+                                 <img src="assets/images/HP1.png" class="w-75" alt="">                  
+                                @elseif ($stat->name === "Keperluan Hukum Perorangan")
+                                 <img src="assets/images/HP.png" class="w-75" alt="">                                          
+                                @endif
                                 </div>
                             </div>
-                            <div class="counter_no">
+                            <div class="counter_no ">
                                 <div>
                                     <p class="total_no">{{ $stat->count }}</p>
-                                    <p class="head_couter2">{{ $stat->name }}</p>
+                                    <p class="head_couter2 fs-6 mt-2 "><a href="{{ route('web.customer.index', ['service_type' => $stat->id]) }}">{{ $stat->name }}</a></p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endforeach  
             </div>
         </div>
 

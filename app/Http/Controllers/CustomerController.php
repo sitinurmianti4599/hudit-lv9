@@ -33,6 +33,7 @@ class CustomerController extends Controller
         $stats = [];
         foreach ($service_types as $service_type) {
             $stat = new \stdClass();
+            $stat->id = $service_type->id;
             $stat->name = $service_type->name;
             $stat->count = Customer::query()->where('service_type_id', $service_type->id)->count();
             $stats[] = $stat;
