@@ -1,5 +1,5 @@
 @extends('layout/main-layout')
-@section('title', 'Tambah-Akun')
+@section('title', 'Tambah-Pelanggan')
 
 @section('konten')
 

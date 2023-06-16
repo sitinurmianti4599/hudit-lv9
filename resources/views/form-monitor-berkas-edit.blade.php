@@ -1,5 +1,5 @@
 @extends('layout/main-layout')
-@section('title', 'Edit-Akun')
+@section('title', 'Edit-Data Berkas')
 
 @section('konten')
 
