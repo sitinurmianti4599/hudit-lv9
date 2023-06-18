@@ -27,7 +27,6 @@
                         @csrf
                         @method('PATCH')
                         <div class="clear-fix"></div>
-                        <span class="section">Tambah Data Akun</span>
                         <div class="col-md-12 field  form-group">
                             <label class="col-form-label col-md-3 col-sm-3  label-align">Username</label>
                             <div class="col-md-6 col-sm-6">

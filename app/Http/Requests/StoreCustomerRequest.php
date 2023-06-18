@@ -24,7 +24,7 @@ class StoreCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'nullable|image|size:4096',
+            'photo' => 'nullable|image|max:4096',
             'name' => 'required|string',
             'address' => 'required|string',
             'job' => 'required|string',

@@ -108,12 +108,12 @@
                                 Keterangan
                             </label>
                             <div class="col-md-6 col-sm-6">
-                                <textarea id="information" name="information" value="{{ old('information', $submission->information) }}"
+                                <textarea id="information" name="information"
                                     @class([
                                         'form-control',
                                         'is-valid' => session()->has('information') && !$errors->has('information'),
                                         'is-invalid' => $errors->has('information'),
-                                    ])></textarea>
+                                    ])>{{ old('information', $submission->information) }}</textarea>
                                 @error('information')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -123,7 +123,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 offset-md-3 mt-3">
                                     <button type='submit' class="btn btn-info">Update</button>
-                                    <a href="/detail-pelanggan" class="btn btn-warning">Cancel</a>
+                                    <a href="{{ url()->previous() }}" class="btn btn-warning">Cancel</a>
                                 </div>
                             </div>
                         </div>

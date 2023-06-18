@@ -61,7 +61,7 @@
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel me-2">
                     <div class="x_title">
-                        <h2>Data Laporan <small>Tahun 2022</small></h2>
+                        <h2>Data Laporan </h2>
                         <ul class="nav navbar-right panel_toolbox d-flex justify-content-end">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>

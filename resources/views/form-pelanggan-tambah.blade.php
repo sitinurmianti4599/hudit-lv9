@@ -156,8 +156,7 @@
                             <div class="col-md-6 offset-md-3 mt-3">
                                 <button type='submit' class="btn btn-primary">Submit</button>
                                 <button type='reset' class="btn btn-success">Reset</button>
-                                <a href="/pelanggan" class="btn btn-danger">Cancel</a>
-
+                                <a href="{{ url()->previous() }}" class="btn btn-danger">Cancel</a>
                             </div>
                         </div>
                     </form>

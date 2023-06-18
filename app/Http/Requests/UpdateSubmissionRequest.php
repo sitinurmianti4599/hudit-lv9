@@ -24,7 +24,7 @@ class UpdateSubmissionRequest extends FormRequest
     public function rules()
     {
         return [
-            'proof' => 'nullable|image|size:4096',
+            'proof' => 'nullable|image|max:4096',
             'status' => 'required|in:pending,progress,done',
             'date' => 'required|date',
             'done' => 'nullable|date',

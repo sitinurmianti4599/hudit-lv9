@@ -54,8 +54,7 @@ class CustomerController extends Controller
         $data = $request->validated();
         /** @var Customer */
         $customer = Customer::create($data);
-
-        return to_route('web.customer.index');
+        return to_route('web.customer.index', ['service_type' => $customer->service_type_id]);
     }
     public function show(Customer $customer)
     {
@@ -73,16 +72,13 @@ class CustomerController extends Controller
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
         $data = $request->validated();
-        if ($customer->service_id != $data['service_id']) {
-            return back()->withErrors(['service_id' => 'cannot change']);
-        }
         $customer->update($data);
-        return to_route('web.customer.index');
+        return to_route('web.customer.show', ['customer' => $customer]);
     }
     public function destroy(Customer $customer)
     {
         $customer->delete();
 
-        return to_route('web.customer.index');
+        return to_route('web.customer.index', ['service_type' => $customer->service_type_id]);
     }
 }

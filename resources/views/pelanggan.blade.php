@@ -46,12 +46,12 @@
                                             <div class="progress" role="progressbar" aria-label="Animated striped example"
                                                 aria-valuenow="{{ $customer->progress }}" aria-valuemin="0"
                                                 aria-valuemax="100" style="border-radius: 20px">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated {{ $customer->progress == 100 ? 'bg-success' : 'bg-info' }}"
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated {{ $customer->progress == 100 ? 'bg-success' : 'bg-warning' }}"
                                                     style="width: {{ $customer->progress }}%">{{ $customer->progress }}%
                                                 </div>
                                             </div>
                                         </td>
-                                        <td><span class="fs-6 fw-bold {{ $customer->progress == 100 ? 'text-success' : 'text-info' }}">{{ $customer->status }}</span></td>
+                                        <td><span class="fs-6 fw-bold {{ $customer->progress == 100 ? 'text-success' : 'text-warning' }}">{{ $customer->status }}</span></td>
 
                                         <td class=" "><a
                                                 href="{{ route('web.customer.show', ['customer' => $customer]) }}"

@@ -16,7 +16,7 @@ class Submission extends Model
         parent::boot();
         static::updating(function (Submission $submission) {
             if ($submission->status == 'done') {
-                $submission->done = now();
+                // $submission->done = now();
             } else {
                 $submission->done = null;
             }

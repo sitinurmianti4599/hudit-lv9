@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('job');
             $table->string('telp');
             $table->integer('progress')->default(0);
-            $table->enum('status', ['pending', 'progress', 'done'])->default('progress');
+            $table->enum('status', ['pending', 'progress', 'done'])->default('pending');
             $table->date('order_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->date('done_date')->nullable();
 

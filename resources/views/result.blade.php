@@ -34,7 +34,7 @@
                                                 <td class="text-white">{{ $customer->name }}</td>
                                                 <td class="text-white">
                                                     <span
-                                                        class="fw-bold {{ $customer->status == 'done' ? 'text-success' : 'text-info' }}">
+                                                        class="fw-bold {{ $customer->status == 'done' ? 'text-info' : 'text-warning' }}">
                                                         {{ $customer->status }}
                                                     </span>
                                                 </td>
@@ -61,7 +61,8 @@
 
                                         <div>
                                             <div class="clear-fix"></div>
-                                            <b class="text-white mb-5">Keterangan : </b>
+                                            <b c
+                                            lass="text-white mb-5">Keterangan : </b>
                                             <div class="ms-5 mb-2">
                                                 <ul class="ms-5 fw-bold text-light" style="list-style: disc;">
                                                     @foreach ($customer->submissions as $submission)
@@ -69,8 +70,39 @@
                                                             <span>
                                                                 {{ $submission->file->name }}
                                                             </span>
-                                                            <span> : </span>
+                                                            <span> :&nbsp;&nbsp;</span>
                                                             @if ($submission->status == 'pending')
+                                                                <span class="text-danger fs-6 fw-bold">
+                                                                    {{ $submission->status }}
+                                                                </span>
+                                                                <span>
+                                                                     &nbsp;( {{ $submission->information }} )
+                                                                </span>
+                                                            @elseif ($submission->status == 'progress')
+                                                                <span class="text-warning fs-6 fw-bold">
+                                                                    {{ $submission->status }} 
+                                                                </span>
+                                                                <span>
+                                                                     &nbsp;( {{ $submission->information }} )
+                                                                </span>
+                                                            @elseif ($submission->status == 'done')
+                                                                <span class="text-info fs-6 fw-bold" style="color:#45f731;">
+                                                                    {{ $submission->status }}
+                                                                </span>
+                                                            @endif
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+
+                                                <!-- <table class="text-white fw-bold me-5 mt-3">
+                                                @foreach ($customer->submissions as $submission)
+                                                   
+                                                    <tr>
+                                                        <td>{{$loop->iteration}}. &nbsp;&nbsp;&nbsp;</td>
+                                                        <td>{{ $submission->file->name }}</td>
+                                                        <td> : &nbsp;&nbsp;</td>
+                                                        <td>
+                                                        @if ($submission->status == 'pending')
                                                                 <span class="text-warning fs-6 fw-bold">
                                                                     {{ $submission->status }}
                                                                 </span>
@@ -79,13 +111,17 @@
                                                                     {{ $submission->status }}
                                                                 </span>
                                                             @elseif ($submission->status == 'done')
-                                                                <span class="text-success fs-6 fw-bold">
-                                                                    {{ $submission->status }}
+                                                                <span class=" fs-6 fw-bold" style="color:#45f731;">
+                                                                    {{ $submission->status }} 
                                                                 </span>
                                                             @endif
-                                                        </li>
+                                                        </td>
+                                                        <td> &nbsp;&nbsp;{{ $submission->information }}</td>
+                                                    </tr>
                                                     @endforeach
-                                                </ul>
+                                                </table> -->
+
+
                                             </div>
                                         </div>
                                         <br><br>
@@ -96,7 +132,7 @@
                                                     $day += $file->day_estimate;
                                                 }
                                             @endphp
-                                            <span class="text-center text-white mt-5">*Perkiraan Selesai Pada Tanggal
+                                            <span class="text-center text-white mt-5 fs-5">*Perkiraan Selesai Pada Tanggal
                                                 {{ $Carbon::parse($customer->order_date)->addDays($day)->format('d M Y') }}</span>
                                         </center>
                                     </div>

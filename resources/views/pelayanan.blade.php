@@ -10,25 +10,25 @@
                     </div>
                 </div>
             </div>
-            <div class="row column1">
+            <div class="row column1 ">
                 @foreach ($stats as $stat)
                     <div class="col-md-8 col-lg-4" >
-                        <div class="full counter_section margin_bottom_30">
-                            <div class="couter_icon">
-                                <div class="pbu">
+                        <div class="full counter_section margin_bottom_30 ">
+                            <div class="couter_icon ">
+                                <div class="pbu w-100" >
                                 @if ($stat->name === "Pendirian Badan Hukum")
-                                 <img src="assets/images/BD.png" class="w-75" alt="">                  
+                                 <img src="assets/images/BD.png" class="w-100" alt="">                  
                                 @elseif ($stat->name === "Keperluan Hukum Perusahaan")
-                                 <img src="assets/images/HP1.png" class="w-75" alt="">                  
+                                 <img src="assets/images/HP1.png" class="w-100" alt="">                  
                                 @elseif ($stat->name === "Keperluan Hukum Perorangan")
-                                 <img src="assets/images/HP.png" class="w-75" alt="">                                          
+                                 <img src="assets/images/HP.png" class="w-100" alt="">                                          
                                 @endif
                                 </div>
                             </div>
-                            <div class="counter_no ">
+                            <div class="counter_no" style="margin-right:20px;">
                                 <div>
                                     <p class="total_no">{{ $stat->count }}</p>
-                                    <p class="head_couter2 fs-6 mt-2 "><a href="{{ route('web.customer.index', ['service_type' => $stat->id]) }}">{{ $stat->name }}</a></p>
+                                    <p class="head_couter2 fs-5 mt-2 me-5"><a href="{{ route('web.customer.index', ['service_type' => $stat->id]) }}">{{ $stat->name }}</a></p>
                                 </div>
                             </div>
                         </div>

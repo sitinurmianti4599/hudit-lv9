@@ -148,13 +148,22 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="col-md-6 offset-md-3 mt-3">
                                 <button type='submit' class="btn btn-info">Update</button>
-                                <a href="/detail-pelanggan" class="btn btn-warning">Cancel</a>
+                                <a href="{{ url()->previous() }}" class="btn btn-warning">Cancel</a>
                             </div>
                         </div>
+                        @if ($errors->any())
+                            <div>
+                                <div>error validation</div>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>

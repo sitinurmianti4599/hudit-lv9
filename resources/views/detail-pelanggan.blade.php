@@ -108,11 +108,11 @@
                                                     <td>{{ $submission->file->location }}</td>
                                                     <td>
                                                         @if ($submission->status == 'pending')
-                                                            <span class="text-warning fs-6 fw-bold">
+                                                            <span class="text-danger fs-6 fw-bold">
                                                                 {{ $submission->status }}
                                                             </span>
                                                         @elseif ($submission->status == 'progress')
-                                                            <span class="text-info fs-6 fw-bold">
+                                                            <span class="text-warning fs-6 fw-bold">
                                                                 {{ $submission->status }}
                                                             </span>
                                                         @elseif ($submission->status == 'done')
