@@ -31,8 +31,10 @@
                                     <th class="column-title">Kode Regis</th>
                                     <th class="column-title">Layanan </th>
                                     <th class="column-title">Tanggal Order</th>
+                                    @can('data_master_show', auth()->user())
                                     <th class="column-title col-3">Progress</th>
                                     <th class="column-title">Status</th>
+                                    @endcan
                                     <th class="column-title">Action</th>
                                 </tr>
                             </thead>
@@ -44,6 +46,7 @@
                                         <td class=" ">{{ $customer->registration }}</td>
                                         <td class=" ">{{ $customer->service->name }}</td>
                                         <td class=" ">{{ $customer->order_date }}</td>
+                                        @can('data_master_show', auth()->user())
                                         <td class=" ">
                                             <div class="progress" role="progressbar" aria-label="Animated striped example"
                                                 aria-valuenow="{{ $customer->progress }}" aria-valuemin="0"
@@ -54,7 +57,7 @@
                                             </div>
                                         </td>
                                         <td><span class="fs-6 fw-bold {{ $customer->progress == 100 ? 'text-success' : 'text-warning' }}">{{ $customer->status }}</span></td>
-
+                                        @endcan
                                         <td class=" "><a
                                                 href="{{ route('web.customer.show', ['customer' => $customer]) }}"
                                                 class="btn btn-outline-info p-1 fw-bold">View</a>
