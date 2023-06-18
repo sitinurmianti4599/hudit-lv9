@@ -20,6 +20,9 @@ class AuthController extends Controller
 
         $user = User::query()->where('name', $data['name'])->first();
         // $user->role->position == $data['role'];
+        if (!$user) {
+            return back()->withErrors(['name' => ['username mismatch'], 'password' => ['password mismatch']]);
+        }
         if ($user->name == $data['password']) {
             auth()->login($user, isset($data['remember']));
             session()->regenerate();

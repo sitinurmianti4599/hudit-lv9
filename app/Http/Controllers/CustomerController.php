@@ -20,8 +20,13 @@ class CustomerController extends Controller
             $query = $query->where('service_type_id', $service_type_id);
         }
         if (auth()->user()->role->position == 'person_responsible') {
+            $user = auth()->user();
             $query = $query->whereNot('status', 'done');
-        }
+            $customers = Customer::with('submissions.file')->whereHas("submissions.file", function ($builder) use ($user) {
+                $builder->where('user_id', $user->id);
+            })->get();
+            dd($customers);
+        }        
         return view('pelanggan', [
             'service_type' => ServiceType::find($service_type_id),
             'customers' => $query->get(),

@@ -39,6 +39,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @can('data_master_show', auth()->user())
                                 @foreach ($customers as $customer)
                                     <tr class="even pointer">
                                         <td class="a-center ">{{ $loop->iteration }}</td>
@@ -46,7 +47,6 @@
                                         <td class=" ">{{ $customer->registration }}</td>
                                         <td class=" ">{{ $customer->service->name }}</td>
                                         <td class=" ">{{ $customer->order_date }}</td>
-                                        @can('data_master_show', auth()->user())
                                         <td class=" ">
                                             <div class="progress" role="progressbar" aria-label="Animated striped example"
                                                 aria-valuenow="{{ $customer->progress }}" aria-valuemin="0"
@@ -57,13 +57,36 @@
                                             </div>
                                         </td>
                                         <td><span class="fs-6 fw-bold {{ $customer->progress == 100 ? 'text-success' : 'text-warning' }}">{{ $customer->status }}</span></td>
-                                        @endcan
                                         <td class=" "><a
                                                 href="{{ route('web.customer.show', ['customer' => $customer]) }}"
                                                 class="btn btn-outline-info p-1 fw-bold">View</a>
                                         </td>
                                     </tr>
                                 @endforeach
+                                @endcan
+
+                                @can('data_master_show_pj', auth()->user())
+                                @foreach ($customers as $customer)
+                                @dd(auth()->user(), $customer->submissions)
+
+                                @foreach ($customer->submissions as $submission)
+                                    @if( auth()->user()->fullname == $submission->file->user->fullname)
+                                               
+                                <!-- @if( auth()->user()->id == $customer->file->user->id)
+                                    <tr class="even pointer">
+                                        <td class="a-center ">{{ $loop->iteration }}</td>
+                                        <td class=" ">{{ $customer->name }}</td>
+                                        <td class=" ">{{ $customer->registration }}</td>
+                                        <td class=" ">{{ $customer->service->name }}</td>
+                                        <td class=" ">{{ $customer->order_date }}</td>
+                                        <td class=" "><a
+                                                href="{{ route('web.customer.show', ['customer' => $customer]) }}"
+                                                class="btn btn-outline-info p-1 fw-bold">View</a>
+                                        </td>
+                                    </tr>
+                                    @endif
+                                @endforeach -->
+                                @endcan
                             </tbody>
                         </table>
                     </div>
