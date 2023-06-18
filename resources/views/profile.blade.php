@@ -6,7 +6,7 @@
     <div class="profile-card mb-5 mt-5 ">
       <header>
         @if($user->photo === !null )
-        <img src="{{ $user->photo }}" alt="" class="img-circle img-fluid">
+          <img src="{{ $user->photo }}" alt="" class="img-circle img-fluid">
         @elseif ($user->photo === null)
          <img src="assets/images/user.png" alt="" class="img-circle img-fluid">
         @endif

@@ -16,8 +16,10 @@
             <div class="x_panel">
                 <div class="x_content">
                     <strong class="fs-5" style="text-transform: capitalize;">{{ $service_type->name }}</strong>
+                    @can('data_master_show', auth()->user())
                     <a href="{{ route('web.customer.create') }}"><button type="button" class="btn btn-outline-secondary mb-2"
                             style="float: right">Tambah Data + </button></a>
+                            @endcan
                     <br><br>
                     <div class="card-box table-responsive">
 

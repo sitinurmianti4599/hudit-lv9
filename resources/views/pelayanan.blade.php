@@ -37,6 +37,7 @@
             </div>
         </div>
 
+        @can('data_master_show', auth()->user())
         {{-- tabel selesai --}}
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
@@ -85,6 +86,7 @@
                 </div>
             </div>
         </div>
+        @endcan
 
 
     </div>

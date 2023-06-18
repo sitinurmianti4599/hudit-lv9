@@ -8,6 +8,7 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2 class="fw-bold">Detail Pelanggan : </h2>
+                    @can('data_master_show', auth()->user())
                     <ul class="nav navbar-right panel_toolbox d-flex justify-content-end">
                         <li><a href="{{ route('web.customer.edit', ['customer' => $customer]) }}"
                                 class="btn btn-info p-2 fw-bold text-light">Edit</a></li>
@@ -20,6 +21,7 @@
                             </form>
                         </li>
                     </ul>
+                    @endcan
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -59,7 +61,7 @@
                                 <th>:</th>
                                 <td>{{ date('d M Y', strtotime($customer->order_date)) }}</td>
 
-                                <th>Perkiraan Selesai</th>
+                                <th>Estimasi Penyelesaian</th>
                                 <th>:</th>
                                 @php
                                     $day = 0;
@@ -92,7 +94,7 @@
                                                 <th>Lokasi</th>
                                                 <th>Status</th>
                                                 <th>Dokumentasi </th>
-                                                <th>PJ</th>
+                                                <th>Nama PJ</th>
                                                 <th>Tgl Pengajuan </th>
                                                 <th>Tgl Selesai </th>
                                                 <th>Keterangan </th>
