@@ -48,4 +48,12 @@ class UserPolicy
         }
         return false;
     }
+
+    public function data_master_show_pj(User $model)
+    {
+        if ($model->role->position == 'person_responsible') {
+            return true;
+        }
+        return false;
+    }
 }

@@ -7,7 +7,10 @@
         <div class="col-md-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2 class="fw-bold">Detail Pelanggan : </h2>
+                    <h2 class="fw-bold" style="float:left;">Detail Pelanggan  </h2> 
+                    @can('data_master_show_pj', auth()->user())
+                        <b class="me-3 fs-5" style="float:right;">Penanggung Jawab : <span>{{ auth()->user()->fullname }}</span></b> 
+                    @endcan                   
                     @can('data_master_show', auth()->user())
                     <ul class="nav navbar-right panel_toolbox d-flex justify-content-end">
                         <li><a href="{{ route('web.customer.edit', ['customer' => $customer]) }}"
@@ -32,7 +35,7 @@
                                 <th>Nama</th>
                                 <th>:</th>
                                 <td>{{ $customer->name }}</td>
-
+                            
                                 <th>Pekerjaan</th>
                                 <th>:</th>
                                 <td>{{ $customer->job }}</td>
@@ -83,6 +86,7 @@
                                 <h3 class="fw-bold">
                                     <center>Monitoring Berkas</center>
                                 </h3>
+                              
                                 <div class="card-box table-responsive2">
                                     <table id="datatable" class="table table-bordered dt-responsive nowrap2 p-3 fs-6"
                                         cellspacing="0" width="100%">
@@ -103,6 +107,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @can('data_master_show', auth()->user())
                                             @foreach ($customer->submissions as $submission)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
@@ -133,6 +138,45 @@
                                                             class="btn btn-outline-warning p-1  w-100 fw-bold">Edit</a></td>
                                                 </tr>
                                             @endforeach
+                                            @endcan
+
+
+                                            @can('data_master_show_pj', auth()->user())
+                                            @foreach ($customer->submissions as $submission)
+                                              @if( auth()->user()->fullname == $submission->file->user->fullname)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $submission->file->name }}</td>
+                                                    <td>{{ $submission->file->location }}</td>
+                                                    <td>
+                                                        @if ($submission->status == 'pending')
+                                                            <span class="text-danger fs-6 fw-bold">
+                                                                {{ $submission->status }}
+                                                            </span>
+                                                        @elseif ($submission->status == 'progress')
+                                                            <span class="text-warning fs-6 fw-bold">
+                                                                {{ $submission->status }}
+                                                            </span>
+                                                        @elseif ($submission->status == 'done')
+                                                            <span class="text-success fs-6 fw-bold">
+                                                                {{ $submission->status }}
+                                                            </span>
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ $submission->proof }}</td>
+                                                    <td>{{ $submission->file->user->fullname }}</td>
+                                                    <td>{{ date('d M Y', strtotime($submission->date)) }}</td>
+                                                    <td>{{ $submission->done ? date('d M Y', strtotime($submission->done)) : '' }}
+                                                    </td>
+                                                    <td>{{ $submission->information }}</td>
+                                                    <td><a href="{{ route('web.submission.edit', ['submission' => $submission]) }}"
+                                                            class="btn btn-outline-warning p-1  w-100 fw-bold">Edit</a></td>
+                                                </tr>
+                                                @endif
+                                            @endforeach
+                                            @endcan
+
+
                                         </tbody>
                                     </table>
                                 </div>
