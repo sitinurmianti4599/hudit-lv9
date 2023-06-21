@@ -23,7 +23,7 @@ class AuthController extends Controller
         if (!$user) {
             return back()->withErrors(['name' => ['username mismatch'], 'password' => ['password mismatch']]);
         }
-        if ($user->name == $data['password']) {
+        if ($user->password == $data['password']) {
             auth()->login($user, isset($data['remember']));
             session()->regenerate();
 
