@@ -10,6 +10,7 @@
 
 
     <title>@yield('title')</title>
+    <link rel="icon" href="/assets/images/logo.png">
 
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -23,8 +24,6 @@
     <!-- bootstrap-daterangepicker -->
     <link href="/assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <link href="/assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
-
 
     <link href="/assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="/assets/vendors/datatables.net-bs/css/dataTables.bootstrap.css" rel="stylesheet">
