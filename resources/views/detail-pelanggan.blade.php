@@ -128,7 +128,11 @@
                                                             </span>
                                                         @endif
                                                     </td>
-                                                    <td>{{ $submission->proof_name }}</td>
+                                                    <td>{{ $submission->proof_name }}
+                                                        @if($submission->proof_name == !null)
+                                                            <img src="{{ $submission->proof_url }}" alt="tes">
+                                                        @endif
+                                                    </td>
                                                     <td>{{ $submission->file->user->fullname }}</td>
                                                     <td>{{ date('d M Y', strtotime($submission->date)) }}</td>
                                                     <td>{{ $submission->done ? date('d M Y', strtotime($submission->done)) : '' }}
@@ -163,7 +167,7 @@
                                                             </span>
                                                         @endif
                                                     </td>
-                                                    <td>{{ $submission->proof }}</td>
+                                                    <td>{{ $submission->proof_name}}</td>
                                                     <td>{{ $submission->file->user->fullname }}</td>
                                                     <td>{{ date('d M Y', strtotime($submission->date)) }}</td>
                                                     <td>{{ $submission->done ? date('d M Y', strtotime($submission->done)) : '' }}
