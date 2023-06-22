@@ -1,5 +1,5 @@
 @extends('layout/main-layout')
-@section('title', 'Laporan Tahunan')
+@section('title', 'Data Laporan')
 
 @section('konten')
     <div class="midde_cont">
