@@ -57,11 +57,14 @@
                     <div class="clearfix"></div>
 
                     <!-- menu profile quick info -->
-                    <div class="profile clearfix">
-                        <div class="profile_pic user_img">
-                            <img src="/assets/images/user.png" alt="..."
-                                class="rounded-circle img-responsive profile_img w-50 mt-4 ms-4">
-                        </div>
+                    <div class="profile clearfix mt-2">
+                        <div class="profile_pic user_img p-1 mb-3">
+                        @if(auth()->user()->photo == !null )
+                        <img src="{{ auth()->user()->photo_url }}" alt="{{auth()->user()->photo_name}}" class="img-circle img-fluid p-0 mt-3 ms-1" style="width:55px!important; height:55px!important; ">
+                        @elseif (auth()->user()->photo == null)
+                        <img src="/assets/images/user.png" alt="..."class="rounded-circle img-responsive profile_img w-50 mt-4 ms-4">
+                        @endif
+                          </div>
                         <div class="profile_info user_info">
                             <h6>{{ auth()->user()->fullname }}</h6>
                             <p>{{ auth()->user()->role->position }}</p>
@@ -125,7 +128,13 @@
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false"
                                     style="color: #fff;">
-                                    <img src="/assets/images/user.png" alt=""><b style="color: #fff;">
+                                    @if(auth()->user()->photo == !null )
+                                    <img src="{{ auth()->user()->photo_url }}" alt="{{auth()->user()->photo_name}}">
+                                    @elseif (auth()->user()->photo == null)
+                                    <img src="/assets/images/user.png" alt="...">
+                                    @endif
+                                    
+                                    <b style="color: #fff;">
                                         {{ auth()->user()->fullname }}
                                     </b>
                                 </a>

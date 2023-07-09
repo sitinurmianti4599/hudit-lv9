@@ -128,9 +128,11 @@
                                                             </span>
                                                         @endif
                                                     </td>
-                                                    <td>{{ $submission->proof_name }}
+                                                    <td>
                                                         @if($submission->proof_name == !null)
-                                                            <img src="{{ $submission->proof_url }}" alt="tes">
+                                                        <center><span class="docm"><img src="{{$submission->proof_url}}" alt="{{$submission->proof_name}}"></span></center>
+                                                        @elseif ($submission->proof_name == null)
+                                                        <center><span class="docm">null</span></center>
                                                         @endif
                                                     </td>
                                                     <td>{{ $submission->file->user->fullname }}</td>

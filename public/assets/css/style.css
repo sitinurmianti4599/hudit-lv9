@@ -815,4 +815,13 @@ a[data-toggle="collapse"] {
         color: #0a1f35 !important;
     }
 
+    .docm img{
+        width:80px;
+        height:90px; 
+    }
+
+    .docm img:hover{
+        width:200px;
+        height:200px; 
+    }
     

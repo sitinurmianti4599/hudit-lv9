@@ -5,9 +5,9 @@
 <div class="col-md-12 col-sm-12 mt-5 profile_details"  >
     <div class="profile-card mb-5 mt-5 ">
       <header>
-        @if($user->photo === !null )
-          <img src="{{ $user->photo }}" alt="" class="img-circle img-fluid">
-        @elseif ($user->photo === null)
+        @if($user->photo == !null )
+          <img src="{{ $user->photo_url }}" alt="{{$user->photo_name}}" class="img-circle img-fluid p-1" style="border:2px solid black; width:200px!important; height:200px!important; ">
+        @elseif ($user->photo == null)
          <img src="assets/images/user.png" alt="" class="img-circle img-fluid">
         @endif
         <h1>{{ $user->fullname }}</h1>
