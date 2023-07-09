@@ -67,7 +67,15 @@
                           </div>
                         <div class="profile_info user_info">
                             <h6>{{ auth()->user()->fullname }}</h6>
-                            <p>{{ auth()->user()->role->position }}</p>
+                            <p>
+                                @if(auth()->user()->role->position == "person_responsible")
+                                    Penanggung Jawab
+                                @elseif(auth()->user()->role->position == "administrator")
+                                    Administrator
+                                @endif
+                                <!-- {{ auth()->user()->role->position }} -->
+                                
+                            </p>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->

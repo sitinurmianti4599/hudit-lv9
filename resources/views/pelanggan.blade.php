@@ -19,12 +19,16 @@
                     @can('data_master_show', auth()->user())
                         <a href="{{ route('web.customer.create') }}"><button type="button"
                                 class="btn btn-outline-secondary mb-2" style="float: right">Tambah Data + </button></a>
-                    @endcan
                     <br><br>
                     <div class="card-box table-responsive">
-
                         <table class="table table-bordered jambo_table p-2 fs-6 text-center">
-                            <thead>
+                    @endcan
+                    @can('data_master_show_pj', auth()->user())
+                    <div class="card-box table-responsive2">
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap2 p-3 fs-6 mb-2"
+                                        cellspacing="0" width="100%">
+                    @endcan
+                            <thead class="">
                                 <tr class="headings">
                                     <th>No</th>
                                     <th class="column-title">Nama </th>
@@ -42,7 +46,7 @@
                                 @can('data_master_show', auth()->user())
                                     @foreach ($customers as $customer)
                                         <tr class="even pointer">
-                                            <td class="a-center ">{{ $loop->iteration }}</td>
+                                            <td class="a-center">{{ $loop->iteration }}</td>
                                             <td class=" ">{{ $customer->name }}</td>
                                             <td class=" ">{{ $customer->registration }}</td>
                                             <td class=" ">{{ $customer->service->name }}</td>
@@ -70,14 +74,13 @@
                                 @can('data_master_show_pj', auth()->user())
                                     @foreach ($customers as $customer)
                                         <tr class="even pointer">
-                                            <td class="a-center ">{{ $loop->iteration }}</td>
+                                            <td class=""><center>{{ $loop->iteration }}</center></td>
                                             <td class=" ">{{ $customer->name }}</td>
                                             <td class=" ">{{ $customer->registration }}</td>
                                             <td class=" ">{{ $customer->service->name }}</td>
                                             <td class=" ">{{ $customer->order_date }}</td>
-                                            <td class=" "><a
-                                                    href="{{ route('web.customer.show', ['customer' => $customer]) }}"
-                                                    class="btn btn-outline-info p-1 fw-bold">View</a>
+                                            <td class=""><center><a href="{{ route('web.customer.show', ['customer' => $customer]) }}"
+                                                    class="btn btn-outline-info p-1 fw-bold m-0">View</a></center>
                                             </td>
                                         </tr>
                                     @endforeach

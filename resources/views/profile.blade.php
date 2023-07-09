@@ -11,7 +11,13 @@
          <img src="assets/images/user.png" alt="" class="img-circle img-fluid">
         @endif
         <h1>{{ $user->fullname }}</h1>
-        <p>{{ $user->role->position }}</p>
+        <p>
+        @if(auth()->user()->role->position == "person_responsible")
+             Penanggung Jawab
+        @elseif(auth()->user()->role->position == "administrator")
+            Administrator
+        @endif
+        </p>
       </header>
       <div class="info">
         <h2>Informasi Pribadi</h2>

@@ -169,7 +169,13 @@
                                                             </span>
                                                         @endif
                                                     </td>
-                                                    <td>{{ $submission->proof_name}}</td>
+                                                    <td>
+                                                         @if($submission->proof_name == !null)
+                                                        <center><span class="docm"><img src="{{$submission->proof_url}}" alt="{{$submission->proof_name}}"></span></center>
+                                                        @elseif ($submission->proof_name == null)
+                                                        <center><span class="docm">null</span></center>
+                                                        @endif
+                                                    </td>
                                                     <td>{{ $submission->file->user->fullname }}</td>
                                                     <td>{{ date('d M Y', strtotime($submission->date)) }}</td>
                                                     <td>{{ $submission->done ? date('d M Y', strtotime($submission->done)) : '' }}
