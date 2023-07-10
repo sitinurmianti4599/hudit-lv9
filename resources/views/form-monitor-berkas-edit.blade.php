@@ -53,13 +53,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-12 field  form-group">
-                            <label class="col-form-label col-md-3 col-sm-3  label-align">Dokumentasi</label>
-                            <div class="col-md-6 col-sm-6">
-                                <input class="form-control" type="file" name="proof" />
-                            </div>
-                        </div>
-
+                        
                             <div class="col-md-12 field  form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Nama PJ</label>
                                 <div class="col-md-6 col-sm-6">
@@ -119,6 +113,24 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12 field  form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align">Dokumentasi</label>
+                            <div class="col-md-6 col-sm-6">
+                                <input class="form-control" type="file" name="proof" />
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-md-12 field  form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align"></label>
+                            <div class="col-md-6 col-sm-6">
+                              @if($submission->proof_name == !null)
+                                <span class="docm"><img src="{{$submission->proof_url}}" alt="{{$submission->proof_name}}"></span>  
+                                @elseif ($submission->proof_name == null)
+                                <span></span>  
+                                @endif
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 offset-md-3 mt-3">
