@@ -70,7 +70,18 @@
                                 <input class="form-control" class='photo' type="file" value="{{ $user->photo }}"
                                     name="photo">
                             </div>
+                            
                         </div>
+                        <div class="col-md-12 field  form-group">
+                            <label class="col-form-label col-md-3 col-sm-3  label-align"></label>
+                            <div class="col-md-6 col-sm-6">
+                            @if($user->photo == !null )
+                            <span class="docm"> <img src="{{ $user->photo_url }}" alt="{{$user->photo_name}}" ></span>
+                            @elseif ($user->photo == null)
+                            <img src="assets/images/user.png" alt="" class="img-circle img-fluid">
+                            @endif
+                            </div>
+                        
                         <div class="form-group">
                             <div class="col-md-6 offset-md-3 mt-3">
                                 <button type='submit' class="btn btn-info">Update</button>

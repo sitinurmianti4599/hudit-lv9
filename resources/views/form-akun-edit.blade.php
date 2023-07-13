@@ -50,7 +50,7 @@
                             <label class="col-form-label col-md-3 col-sm-3  label-align">password</label>
                             <div class="col-md-6 col-sm-6">
                                 <input class="form-control" value="{{ $user->password }}" name="password" class='password'
-                                    type="password" />
+                                    type="text" />
                             </div>
                         </div>
                         <div class="col-md-12 field  form-group">
