@@ -154,7 +154,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 offset-md-3 mt-3">
-                                <button type='submit' class="btn btn-primary">Submit</button>
+                                <button type='submit' class="btn btn-primary"onclick="confirmSubmit(event)">Submit</button>
                                 <button type='reset' class="btn btn-success">Reset</button>
                                 <a href="{{ url()->previous() }}" class="btn btn-danger">Cancel</a>
                             </div>

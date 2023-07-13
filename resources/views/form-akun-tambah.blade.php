@@ -35,8 +35,12 @@
                         <div class="col-md-12 field  form-group">
                             <label class="col-form-label col-md-3 col-sm-3  label-align">password</label>
                             <div class="col-md-6 col-sm-6">
-                                <input class="form-control" name="password" class='password' required="required"
+                                <input class="form-control" name="password" class='password' id="password1" required="required"
                                     type="password" />
+                                    <span style="position: absolute;right:15px;top:7px;" onclick="hideshow()">
+                                        <i id="slash" class="fa fa-eye-slash"></i>
+                                        <i id="eye" class="fa fa-eye"></i>
+                                    </span>
                             </div>
                         </div>
                         <div class="col-md-12 field  form-group">
@@ -81,7 +85,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-6 offset-md-3 mt-3">
-                                <button type='submit' class="btn btn-primary">Submit</button>
+                                <button type='submit' class="btn btn-primary" onclick="confirmSubmit(event)">Submit</button>
                                 <button type='reset' class="btn btn-success">Reset</button>
                                 <a href="/data-master" class="btn btn-danger">Cancel</a>
 

@@ -38,6 +38,8 @@
     <link href="/assets/css/custom.css" rel="stylesheet">
 </head>
 
+
+
 @inject('ServiceType', 'App\Models\ServiceType')
 
 <body class="nav-md">
@@ -151,9 +153,9 @@
                                     aria-labelledby="navbarDropdown" style="background:rgba(1, 2, 22, 0.863); ">
                                     <a class="dropdown-item text-light fw-bold"
                                         href="{{ route('web.profile.show') }}"> Profile</a>
-                                    <a class="dropdown-item text-light fw-bold"
-                                        href="{{ route('web.logout.perform') }}"><i
-                                            class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                    <a class="dropdown-item text-light fw-bold" href="#" onclick="showConfirmDialog(event)">
+                                        <i class="fa fa-sign-out pull-right"></i> Log Out
+                                    </a>
                                 </div>
                             </li>
                         </ul>
@@ -213,20 +215,38 @@
     {{-- <!-- Custo --}}
     <!-- Custom Theme Scripts -->
     <script src="/assets/js/custom.min.js"></script>
-    <script src="assets/js/custom2.js"></script>
+    <script src="/assets/js/custom2.js"></script>
+    <script src="/assets/js/myscript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
     </script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
-        addEventListener('load', () => {
-            document.querySelectorAll('[data-click-prevent="true"]').forEach((elm) => {
-                elm.addEventListener('click', (ev) => {
-                    ev.preventDefault()
-                })
-            })
-        })
-    </script>
+
+    
+function showConfirmDialog(event) {
+event.preventDefault(); // Mencegah tindakan logout langsung dilakukan
+Swal.fire({
+    title: 'Konfirmasi Logout',
+    text: 'Anda yakin ingin keluar?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Keluar',
+    cancelButtonText: 'Batal'
+}).then((result) => {
+    if (result.isConfirmed) {
+        window.location.href = "{{route('web.logout.perform')}}";
+    } else {
+        // Tindakan logout dibatalkan
+        // Tidak ada tindakan yang perlu dilakukan.
+    }
+});
+}
+</script>
 </body>
 
 </html>

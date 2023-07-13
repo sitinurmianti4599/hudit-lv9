@@ -150,7 +150,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-6 offset-md-3 mt-3">
-                                <button type='submit' class="btn btn-info">Update</button>
+                                <button type='submit' class="btn btn-info" onclick="confirmSubmit(event)">Update</button>
                                 <a href="{{ url()->previous() }}" class="btn btn-warning">Cancel</a>
                             </div>
                         </div>

@@ -117,10 +117,5 @@
             </div>
 
         </div>
-
-
     </div>
-
-
-
 @endsection

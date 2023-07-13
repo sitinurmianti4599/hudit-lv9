@@ -12,10 +12,10 @@
                         <ul class="nav navbar-right panel_toolbox d-flex justify-content-end">
                             <li>
                                 <form class="contents" action="{{ route('web.user.destroy', ['user' => $user]) }}"
-                                    method="post" enctype="multipart/form-data">
+                                    method="post" enctype="multipart/form-data" id="deleteForm">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger p-2 fw-bold text-light">Hapus Data</button>
+                                    <button class="btn btn-danger p-2 fw-bold text-light" onclick="confirmDelete(event)">Hapus Data</button>
                                 </form>
                             </li>
 
@@ -23,7 +23,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <form class="form mt-4" action="{{ route('web.user.update', ['user' => $user]) }}" method="post"
-                        enctype="multipart/form-data">
+                        enctype="multipart/form-data" id="upd">
                         @csrf
                         @method('PATCH')
                         <div class="clear-fix"></div>
@@ -49,8 +49,12 @@
                         <div class="col-md-12 field  form-group">
                             <label class="col-form-label col-md-3 col-sm-3  label-align">password</label>
                             <div class="col-md-6 col-sm-6">
-                                <input class="form-control" value="{{ $user->password }}" name="password" class='password'
-                                    type="text" />
+                                <input class="form-control" value="{{ $user->password }}" name="password" id="password1" class='password'
+                                    type="password" />
+                                    <span style="position: absolute;right:15px;top:7px;" onclick="hideshow()">
+                                        <i id="slash" class="fa fa-eye-slash"></i>
+                                        <i id="eye" class="fa fa-eye"></i>
+                                    </span>
                             </div>
                         </div>
                         <div class="col-md-12 field  form-group">
@@ -93,7 +97,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-6 offset-md-3 mt-3">
-                                <button type='submit' class="btn btn-info">Update</button>
+                                <button type='submit' class="btn btn-info" onclick="confirmSubmitEdit(event)">Update</button>
                                 <a href="/data-master" class="btn btn-warning">Cancel</a>
                             </div>
                         </div>

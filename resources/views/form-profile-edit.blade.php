@@ -13,7 +13,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <form class="form mt-4" action="{{ route('web.profile.update') }}" method="post"
-                        enctype="multipart/form-data">
+                        enctype="multipart/form-data" id="upd">
                         @csrf
                         @method('PATCH')
                         {{-- <span class="section">Edit Data Akun</span> --}}
@@ -84,7 +84,7 @@
                         
                         <div class="form-group">
                             <div class="col-md-6 offset-md-3 mt-3">
-                                <button type='submit' class="btn btn-info">Update</button>
+                                <button type='submit' class="btn btn-info" onclick="confirmSubmitEdit(event)" >Update</button>
                                 <a href="{{ route('web.profile.show') }}" class="btn btn-warning">Cancel</a>
                             </div>
                         </div>

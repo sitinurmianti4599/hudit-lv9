@@ -13,17 +13,17 @@
                             <li>
                                 <form class="contents"
                                     action="{{ route('web.service.destroy', ['service' => $service]) }}" method="post"
-                                    enctype="multipart/form-data">
+                                    enctype="multipart/form-data" id="deleteForm">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger p-2 fw-bold text-light">Hapus Data</button>
+                                    <button class="btn btn-danger p-2 fw-bold text-light" onclick="confirmDelete(event)">Hapus Data</button>
                                 </form>
                             </li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
                     <form class="form mt-4" action="{{ route('web.service.update', ['service' => $service]) }}"
-                        method="post" enctype="multipart/form-data">
+                        method="post" enctype="multipart/form-data" id="upd">
                         @csrf
                         @method('PATCH')
                         {{-- <div class="clear-fix"></div>
@@ -72,7 +72,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 offset-md-3 mt-3">
-                                    <button type='submit' class="btn btn-info">Update</button>
+                                    <button type='submit' class="btn btn-info" onclick="confirmSubmitEdit(event)">Update</button>
                                     <a href="/data-master" class="btn btn-warning">Cancel</a>
                                 </div>
                             </div>

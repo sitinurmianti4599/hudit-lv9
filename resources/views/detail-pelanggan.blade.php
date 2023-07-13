@@ -16,11 +16,12 @@
                         <li><a href="{{ route('web.customer.edit', ['customer' => $customer]) }}"
                                 class="btn btn-info p-2 fw-bold text-light">Edit</a></li>
                         <li>
+                           
                             <form class="contents" action="{{ route('web.customer.destroy', ['customer' => $customer]) }}"
-                                method="post" enctype="multipart/form-data">
+                                method="post" enctype="multipart/form-data" id="deleteForm">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger p-2 fw-bold text-light">Hapus</button>
+                                <button class="btn btn-danger p-2 fw-bold text-light" onclick="confirmDelete(event)">Hapus</button>
                             </form>
                         </li>
                     </ul>
