@@ -118,20 +118,26 @@
                         <div class="col-md-12 field  form-group">
                             <label class="col-form-label col-md-3 col-sm-3  label-align">Dokumentasi</label>
                             <div class="col-md-6 col-sm-6">
-                                <input class="form-control" type="file" name="proof" />
+                                @if($submission->proof_name)
+                                    <img src="{{$submission->proof_url }}" class="img-preview img-fluid" alt="{{$submission->proof_name}}">
+                                @else
+                                <!-- <span></span>   -->
+                                    <img class="img-preview img-fluid">
+                                 @endif
+                                <input class="form-control" type="file" name="proof" id="dokmen" onchange="previewImage()" />
                             </div>
                             
                         </div>
 
                         <div class="col-md-12 field  form-group">
-                            <label class="col-form-label col-md-3 col-sm-3  label-align"></label>
+                            <!-- <label class="col-form-label col-md-3 col-sm-3  label-align"></label>
                             <div class="col-md-6 col-sm-6">
                               @if($submission->proof_name == !null)
                                 <span class="docm"><img src="{{$submission->proof_url}}" alt="{{$submission->proof_name}}"></span>  
                                 @elseif ($submission->proof_name == null)
                                 <span></span>  
                                 @endif
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <div class="col-md-6 offset-md-3 mt-3">
                                     <button type='submit' class="btn btn-info" onclick="confirmSubmit(event)">Update</button>

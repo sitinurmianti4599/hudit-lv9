@@ -73,10 +73,13 @@ function showSuccessMessage(message) {
         title: 'Sukses',
         text: message,
         icon: 'success',
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'OK'
+        showConfirmButton: false,
+        // confirmButtonColor: '#3085d6',
+        // confirmButtonText: 'OK',
+     
     });
 }
+
 
 function confirmSubmitEdit(event) {
     event.preventDefault(); // Mencegah tindakan submit langsung dilakukan
@@ -101,4 +104,20 @@ function submitFormUp() {
     // document.querySelector('form').submit(); // Submit form
     document.getElementById('upd').submit(); // Submit form untuk tindakan hapus
     showSuccessMessage('Data berhasil Disimpan.'); // Menampilkan pesan sukses
+}
+
+function previewImage(){
+    
+    const image = document.querySelector('#dokmen');
+    const imgPreview = document.querySelector('.img-preview');
+
+    imgPreview.style.display='block';
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+
+    oFReader.onload = function(oFRevent){
+        imgPreview.src= oFRevent.target.result;
+    }
+
 }
