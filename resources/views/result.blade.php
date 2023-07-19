@@ -76,7 +76,9 @@
                                                                     {{ $submission->status }}
                                                                 </span>
                                                                 <span>
+                                                                    @if($submission->information)
                                                                      &nbsp;( {{ $submission->information }} )
+                                                                     @endif
                                                                 </span>
                                                             @elseif ($submission->status == 'progress')
                                                                 <span class="text-warning fs-6 fw-bold">
@@ -93,35 +95,6 @@
                                                         </li>
                                                     @endforeach
                                                 </ul>
-
-                                                <!-- <table class="text-white fw-bold me-5 mt-3">
-                                                @foreach ($customer->submissions as $submission)
-                                                   
-                                                    <tr>
-                                                        <td>{{$loop->iteration}}. &nbsp;&nbsp;&nbsp;</td>
-                                                        <td>{{ $submission->file->name }}</td>
-                                                        <td> : &nbsp;&nbsp;</td>
-                                                        <td>
-                                                        @if ($submission->status == 'pending')
-                                                                <span class="text-warning fs-6 fw-bold">
-                                                                    {{ $submission->status }}
-                                                                </span>
-                                                            @elseif ($submission->status == 'progress')
-                                                                <span class="text-info fs-6 fw-bold">
-                                                                    {{ $submission->status }}
-                                                                </span>
-                                                            @elseif ($submission->status == 'done')
-                                                                <span class=" fs-6 fw-bold" style="color:#45f731;">
-                                                                    {{ $submission->status }} 
-                                                                </span>
-                                                            @endif
-                                                        </td>
-                                                        <td> &nbsp;&nbsp;{{ $submission->information }}</td>
-                                                    </tr>
-                                                    @endforeach
-                                                </table> -->
-
-
                                             </div>
                                         </div>
                                         <br><br>
