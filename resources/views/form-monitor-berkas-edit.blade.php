@@ -119,10 +119,10 @@
                             <label class="col-form-label col-md-3 col-sm-3  label-align">Dokumentasi</label>
                             <div class="col-md-6 col-sm-6">
                                 @if($submission->proof_name)
-                                    <img src="{{$submission->proof_url }}" class="img-preview img-fluid" alt="{{$submission->proof_name}}">
+                                    <img src="{{$submission->proof_url }}" class="img-preview img-fluid mb-2" alt="{{$submission->proof_name}}">
                                 @else
                                 <!-- <span></span>   -->
-                                    <img class="img-preview img-fluid">
+                                    <img class="img-preview img-fluid mb-2">
                                  @endif
                                 <input class="form-control" type="file" name="proof" id="dokmen" onchange="previewImage()" />
                             </div>

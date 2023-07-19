@@ -68,10 +68,10 @@
                             <label class="col-form-label col-md-3 col-sm-3  label-align">Foto</label>
                             <div class="col-md-6 col-sm-6">
                             @if($user->photo)
-                                    <img src="{{ $user->photo_url }}" class="img-preview img-fluid" alt="{{$user->photo_name}}">
+                                    <img src="{{ $user->photo_url }}" class="img-preview img-fluid mb-2" alt="{{$user->photo_name}}">
                                 @else
                                 <!-- <span></span>   -->
-                                    <img class="img-preview img-fluid">
+                                    <img class="img-preview img-fluid mb-2">
                                  @endif
                                 <input class="form-control" class='photo' type="file" name="photo" id="dokmen"  onchange="previewImage()">
                             </div>
