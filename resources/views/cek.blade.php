@@ -4,7 +4,7 @@
 @section('konten')
     <div class="title-cek">
         <div class="cover-cek">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand site_title" href="/">
                 <img src="assets/images/logohd.png" alt="Logo" height="40" class="d-inline-block align-text-top">
             </a>
             <h2 class="">Cek Progress Berkas Layanan <b>Hukum</b> Anda</h2>
