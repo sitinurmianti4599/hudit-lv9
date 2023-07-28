@@ -73,9 +73,9 @@ function showSuccessMessage(message) {
         title: 'Sukses',
         text: message,
         icon: 'success',
-        showConfirmButton: false,
-        // confirmButtonColor: '#3085d6',
-        // confirmButtonText: 'OK',
+        // showConfirmButton: false,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK',
      
     });
 }
