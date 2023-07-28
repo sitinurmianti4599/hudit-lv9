@@ -14,7 +14,7 @@
                     <div class="input-group w-50">
                         <input type="text " class="form-control kd-cek {{ $errors->has('id') ? 'is-invalid' : '' }}"
                             name="id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
-                            placeholder="Masukkan Kode">
+                            placeholder="Masukkan Kode" autocomplete=off>
                         @error('id')
                             <div id="" class="invalid-feedback">
                                 {{ $message }}
