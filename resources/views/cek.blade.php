@@ -12,14 +12,19 @@
                 <form action="{{ route('web.track.result') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="input-group w-50">
-                        <input type="text " class="form-control kd-cek" name="id" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" placeholder="Masukkan Kode">
+                        <input type="text " class="form-control kd-cek {{ $errors->has('id') ? 'is-invalid' : '' }}"
+                            name="id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                            placeholder="Masukkan Kode">
+                        @error('id')
+                            <div id="" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div>
-                        <button  class="btn btn-cek mt-3">Cek</button>
+                        <button class="btn btn-cek mt-3">Cek</button>
                     </div>
                 </form>
-
             </center>
         </div>
     </div>
