@@ -52,6 +52,9 @@ class Customer extends Model
         'service_id',
         'service_type_id',
     ];
+    protected $casts = [
+        'order_date' => 'datetime:Y-m-d',
+    ];
 
     public function service()
     {
