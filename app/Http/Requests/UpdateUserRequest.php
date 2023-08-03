@@ -24,7 +24,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable|image|max:20480',
             'name' => 'required|string|max:256|unique:users,name,'.request()->route('user')->id,
             'fullname' => 'required|string|max:256',
             'telp' => 'required|string|max:256|unique:users,telp,'.request()->route('user')->id,

@@ -24,7 +24,7 @@ class UpdateCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'nullable|image|max:4096',
+            'photo' => 'nullable|image|max:20480',
             'name' => 'required|string',
             'address' => 'required|string',
             'job' => 'required|string',

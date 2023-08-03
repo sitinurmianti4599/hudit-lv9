@@ -24,7 +24,7 @@ class UpdateProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable|image|max:20480',
             'name' => 'required|string|max:256|unique:users,name,'.auth()->user()->id,
             'fullname' => 'required|string|max:256',
             'telp' => 'required|string|max:256|unique:users,name,'.auth()->user()->id,
@@ -32,7 +32,7 @@ class UpdateProfileRequest extends FormRequest
             'address' => 'required|string|max:256',
             'date_of_birth' => 'required|date|max:256',
             // 'password' => 'nullable|string|max:256',
-    
+
             // 'role_id' => 'sometimes|uuid|exists:roles,id',
         ];
     }

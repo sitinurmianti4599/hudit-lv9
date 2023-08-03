@@ -24,7 +24,7 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable|image|max:20480',
             'name' => 'required|string|max:256|unique:users,name',
             'fullname' => 'required|string|max:256',
             'telp' => 'required|string|max:256|unique:users,telp',
