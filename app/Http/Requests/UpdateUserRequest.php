@@ -27,12 +27,12 @@ class UpdateUserRequest extends FormRequest
             'photo' => 'nullable|image|max:2048',
             'name' => 'required|string|max:256|unique:users,name,'.request()->route('user')->id,
             'fullname' => 'required|string|max:256',
-            'telp' => 'required|string|max:256|unique:users,name,'.request()->route('user')->id,
-            'email' => 'required|email|max:256|unique:users,name,'.request()->route('user')->id,
+            'telp' => 'required|string|max:256|unique:users,telp,'.request()->route('user')->id,
+            'email' => 'required|email|max:256|unique:users,email,'.request()->route('user')->id,
             'address' => 'required|string|max:256',
             'date_of_birth' => 'required|date|max:256',
             'password' => 'nullable|string|max:256',
-    
+
             'role_id' => 'required|uuid|exists:roles,id',
         ];
     }
