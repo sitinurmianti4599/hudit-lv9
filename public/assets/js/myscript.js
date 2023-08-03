@@ -63,9 +63,21 @@ function confirmSubmit(event) {
     });
 }
 
+// jalankan di halaman tambah pengguna
+function tambahUserMain() {
+    if (success) {
+        setTimeout(() => {
+            location.assign(redirect)
+        }, 2000);
+        showSuccessMessage('Data berhasil Disimpan.'); // Menampilkan pesan sukses
+    }
+    if (failed) {
+        showFailedMessage('Data Gagal Disimpan.'); // Menampilkan pesan gagal
+    }
+}
+
 function submitForm() {
     document.querySelector('form').submit(); // Submit form
-    showSuccessMessage('Data berhasil Disimpan.'); // Menampilkan pesan sukses
 }
 
 function showSuccessMessage(message) {
@@ -76,7 +88,15 @@ function showSuccessMessage(message) {
         // showConfirmButton: false,
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'OK',
-     
+    });
+}
+
+function showFailedMessage(message) {
+    Swal.fire({
+        title: 'Gagal',
+        text: message,
+        icon: 'error',
+        showConfirmButton: false,
     });
 }
 
@@ -107,7 +127,7 @@ function submitFormUp() {
 }
 
 function previewImage(){
-    
+
     const image = document.querySelector('#dokmen');
     const imgPreview = document.querySelector('.img-preview');
 

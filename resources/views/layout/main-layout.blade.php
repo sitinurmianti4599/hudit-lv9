@@ -76,7 +76,7 @@
                                     Administrator
                                 @endif
                                 <!-- {{ auth()->user()->role->position }} -->
-                                
+
                             </p>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                                     @elseif (auth()->user()->photo == null)
                                     <img src="/assets/images/user.png" alt="...">
                                     @endif
-                                    
+
                                     <b style="color: #fff;">
                                         {{ auth()->user()->fullname }}
                                     </b>
@@ -225,7 +225,7 @@
 
     <script>
 
-    
+
 function showConfirmDialog(event) {
 event.preventDefault(); // Mencegah tindakan logout langsung dilakukan
 Swal.fire({
@@ -247,6 +247,7 @@ Swal.fire({
 });
 }
 </script>
+@yield('post_script')
 </body>
 
 </html>

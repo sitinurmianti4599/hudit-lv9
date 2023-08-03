@@ -1,6 +1,10 @@
 @extends('layout/main-layout')
 @section('title', 'Tambah-Akun')
-
+<script>
+    var success = @json(session()->has('success'));
+    var failed = @json($errors->any());
+    var redirect = @json(session('redirect'));
+</script>
 @section('konten')
 
     <div class="row mt-5">
@@ -135,7 +139,6 @@
                                     onclick="confirmSubmit(event)">Submit</button>
                                 <button type='reset' class="btn btn-success">Reset</button>
                                 <a href="/data-master" class="btn btn-danger">Cancel</a>
-
                             </div>
                         </div>
                     </form>
@@ -147,4 +150,10 @@
 
 
 
+@endsection
+
+@section('post_script')
+    <script>
+        tambahUserMain()
+    </script>
 @endsection

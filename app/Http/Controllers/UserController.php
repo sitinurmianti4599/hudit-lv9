@@ -25,7 +25,7 @@ class UserController extends Controller
         $data = $request->validated();
         $user = User::create($data);
 
-        return to_route('web.data_master.index');
+        return back()->with('redirect', route('web.data_master.index'))->with('success', true);
     }
     public function show($id)
     {
