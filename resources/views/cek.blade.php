@@ -17,7 +17,7 @@
                             placeholder="Masukkan Kode" autocomplete=off>
                         @error('id')
                             <div id="" class="invalid-feedback">
-                                {{ $message }}
+                               <h4 class="text-danger"> {{ $message }} </h4>
                             </div>
                         @enderror
                     </div>
