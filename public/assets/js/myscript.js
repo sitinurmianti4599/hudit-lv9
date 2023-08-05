@@ -96,7 +96,9 @@ function showFailedMessage(message) {
         title: 'Gagal',
         text: message,
         icon: 'error',
-        showConfirmButton: false,
+         showConfirmButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK',
     });
 }
 

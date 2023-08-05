@@ -124,14 +124,14 @@
                             </div>
                         </div>
                         @env('local')
-                        <div>
-                            @if (filled($errors->all()))
-                                <div>error validation</div>
-                                @foreach ($errors->all() as $error)
-                                    <div>{{ $error }}</div>
-                                @endforeach
-                            @endif
-                        </div>
+                            <!-- <div>
+                                @if (filled($errors->all()))
+                                    <div>error vaflidation</div>
+                                    @foreach ($errors->all() as $error)
+                                        <div>{{ $error }}</div>
+                                    @endforeach
+                                @endif
+                            </div> -->
                         @endenv
                         <div class="form-group">
                             <div class="col-md-6 offset-md-3 mt-3">

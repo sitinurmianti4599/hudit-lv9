@@ -31,8 +31,8 @@ class CheckResultRequest extends FormRequest
     public function messages()
     {
         return [
-            'id.exists' => 'kode registrasi tidak terdaftar.',
-            'id.required' => 'kode registrasi tidak boleh kosong.',
+            'id.exists' => 'Kode Registrasi Tidak Terdaftar.',
+            'id.required' => 'Kode Registrasi Tidak Boleh Kosong.',
         ];
     }
 }
