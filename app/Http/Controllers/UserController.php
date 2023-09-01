@@ -25,7 +25,7 @@ class UserController extends Controller
         $data = $request->validated();
         $user = User::create($data);
 
-        return back()->with('redirect', route('web.data_master.index'))->with('success', true);
+        return back()->with('redirect', route('web.data_master.showakun'))->with('success', true);
     }
     public function show($id)
     {
@@ -43,12 +43,12 @@ class UserController extends Controller
         $data = $request->validated();
         $user->update($data);
 
-        return to_route('web.data_master.index');
+        return to_route('web.data_master.showakun');
     }
     public function destroy(User $user)
     {
         $this->authorize('delete', $user);
         $user->delete();
-        return to_route('web.data_master.index');
+        return to_route('web.data_master.showakun');
     }
 }

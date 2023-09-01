@@ -111,9 +111,18 @@
                                     </ul>
                                 </li>
                                 @can('data_master_show', auth()->user())
-                                    <li><a href="{{ route('web.data_master.index') }}"><i
+                                    <!-- <li><a href="{{ route('web.data_master.index') }}"><i
                                                 class="fa fa-table purple_color2"></i> Data Master</a>
+                                    </li> -->
+
+                                    <li><a><i class="fa fa-table purple_color2"></i>Data Master <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                        <li><a href="{{ route('web.data_master.showakun') }}">Data Akun</a></li>
+                                        <li><a href="{{ route('web.data_master.showlayanan') }}">Data Layanan</a></li>
+                                        <li><a href="{{ route('web.data_master.showberkas') }}">Data Berkas</a></li>
+                                        </ul>
                                     </li>
+
                                     <li><a href="{{ route('web.report') }}"><i
                                                 class="fa fa-bar-chart-o green_color"></i><span>Laporan</span></a>
                                     </li>

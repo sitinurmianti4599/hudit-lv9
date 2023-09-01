@@ -20,4 +20,31 @@ class DataMasterController extends Controller
             'files' => $files,
         ]);
     }
+
+  
+    public function showakun() {
+        $users = User::all();
+
+        return view('master-akun', [
+            'users' => $users,
+        ]);
+    }
+
+    public function showlayanan() {
+        $services = Service::all();
+      
+
+        return view('master-layanan', [
+            'services' => $services,
+        ]);
+    }
+
+    public function showberkas() {
+        $files = File::all();
+
+        return view('master-berkas', [
+            'files' => $files,
+        ]);
+    }
+
 }

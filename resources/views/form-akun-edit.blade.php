@@ -98,7 +98,7 @@
                         <div class="form-group">
                             <div class="col-md-6 offset-md-3 mt-3">
                                 <button type='submit' class="btn btn-info" onclick="confirmSubmitEdit(event)">Update</button>
-                                <a href="/data-master" class="btn btn-warning">Cancel</a>
+                                <a href="/data-master2" class="btn btn-warning">Cancel</a>
                             </div>
                         </div>
                     </form>

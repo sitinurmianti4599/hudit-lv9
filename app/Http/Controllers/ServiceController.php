@@ -29,7 +29,7 @@ class ServiceController extends Controller
         $service = Service::create($data);
         $service->files()->sync($data['files']);
 
-        return to_route('web.data_master.index');
+        return to_route('web.data_master.showlayanan');
     }
     public function show(Service $service)
     {
@@ -50,13 +50,13 @@ class ServiceController extends Controller
         $service->update($data);
         $service->files()->sync($data['files']);
 
-        return to_route('web.data_master.index');
+        return to_route('web.data_master.showlayanan');
     }
     public function destroy(Service $service)
     {
         $service->files()->detach();
         $service->delete();
 
-        return to_route('web.data_master.index');
+        return to_route('web.data_master.showlayanan');
     }
 }

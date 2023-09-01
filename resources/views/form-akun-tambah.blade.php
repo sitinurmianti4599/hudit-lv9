@@ -138,7 +138,7 @@
                                 <button type='submit' class="btn btn-primary"
                                     onclick="confirmSubmit(event)">Submit</button>
                                 <button type='reset' class="btn btn-success">Reset</button>
-                                <a href="/data-master" class="btn btn-danger">Cancel</a>
+                                <a href="/data-master2" class="btn btn-danger">Cancel</a>
                             </div>
                         </div>
                     </form>

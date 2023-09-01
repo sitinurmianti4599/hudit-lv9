@@ -30,7 +30,7 @@ class FileController extends Controller
         /** @var File */
         $file = File::create($data);
 
-        return to_route('web.data_master.index');
+        return to_route('web.data_master.showberkas');
     }
     public function show(File $file)
     {
@@ -52,12 +52,12 @@ class FileController extends Controller
         /** @var File */
         $file->update($data);
 
-        return to_route('web.data_master.index');
+        return to_route('web.data_master.showberkas');
     }
     public function destroy(File $file)
     {
         $file->delete();
 
-        return to_route('web.data_master.index');
+        return to_route('web.data_master.showberkas');
     }
 }

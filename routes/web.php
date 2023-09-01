@@ -44,6 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/submission/{submission}', 'SubmissionController@update')->name('web.submission.update');
 
     Route::get('/data-master', 'DataMasterController@index')->name('web.data_master.index');
+    Route::get('/data-master2', 'DataMasterController@showakun')->name('web.data_master.showakun');
+    Route::get('/data-master4', 'DataMasterController@showberkas')->name('web.data_master.showberkas');
+    Route::get('/data-master3', 'DataMasterController@showlayanan')->name('web.data_master.showlayanan');
 
     Route::get('/form-akun-tambah', 'UserController@create')->name('web.user.create');
     Route::get('/form-berkas-edit/{user}', 'UserController@edit')->name('web.user.edit');
