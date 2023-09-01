@@ -119,9 +119,9 @@
                                                 $link2 = route('web.data_master.showlayanan');
                                                 $link3 = route('web.data_master.showberkas');
                                             @endphp
-                                    <li><a><i class="fa fa-table purple_color2"></i>Data Master <span class="fa fa-chevron-down"></span></a>
+                                    <li style="border:none;"><a><i class="fa fa-table purple_color2"></i>Data Master <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                        <li class="{{ url()->full() == $link1 ? 'active' : '' }}"><a href="{{ $link1 }}">Data Akun</a></li>
+                                        <li class="{{ url()->full() == $link1 ? 'active' : '' }}" ><a href="{{ $link1 }}">Data Akun</a></li>
                                         <li class="{{ url()->full() == $link2 ? 'active' : '' }}"><a href="{{ $link2 }}">Data Layanan</a></li>
                                         <li class="{{ url()->full() == $link3 ? 'active' : '' }}"><a href="{{ $link3 }}">Data Berkas</a></li>
                                         </ul>
