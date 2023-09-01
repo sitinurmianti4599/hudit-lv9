@@ -114,15 +114,18 @@
                                     <!-- <li><a href="{{ route('web.data_master.index') }}"><i
                                                 class="fa fa-table purple_color2"></i> Data Master</a>
                                     </li> -->
-
+                                            @php
+                                                $link1 = route('web.data_master.showakun');
+                                                $link2 = route('web.data_master.showlayanan');
+                                                $link3 = route('web.data_master.showberkas');
+                                            @endphp
                                     <li><a><i class="fa fa-table purple_color2"></i>Data Master <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                        <li><a href="{{ route('web.data_master.showakun') }}">Data Akun</a></li>
-                                        <li><a href="{{ route('web.data_master.showlayanan') }}">Data Layanan</a></li>
-                                        <li><a href="{{ route('web.data_master.showberkas') }}">Data Berkas</a></li>
+                                        <li class="{{ url()->full() == $link1 ? 'active' : '' }}"><a href="{{ $link1 }}">Data Akun</a></li>
+                                        <li class="{{ url()->full() == $link2 ? 'active' : '' }}"><a href="{{ $link2 }}">Data Layanan</a></li>
+                                        <li class="{{ url()->full() == $link3 ? 'active' : '' }}"><a href="{{ $link3 }}">Data Berkas</a></li>
                                         </ul>
-                                    </li>
-
+                                    </li>   
                                     <li><a href="{{ route('web.report') }}"><i
                                                 class="fa fa-bar-chart-o green_color"></i><span>Laporan</span></a>
                                     </li>
