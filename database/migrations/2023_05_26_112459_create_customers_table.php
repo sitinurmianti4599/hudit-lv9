@@ -27,7 +27,8 @@ return new class extends Migration
             $table->string('telp');
             $table->integer('progress')->default(0);
             $table->enum('status', ['pending', 'progress', 'done'])->default('pending');
-            $table->date('order_date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            // $table->date('order_date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('order_date')->useCurrent();
             $table->date('done_date')->nullable();
 
             $table->foreignUuid('service_id')->constrained('services')->cascadeOnUpdate()->cascadeOnDelete();

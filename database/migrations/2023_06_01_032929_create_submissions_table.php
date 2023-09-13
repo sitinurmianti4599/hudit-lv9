@@ -20,7 +20,8 @@ return new class extends Migration
 
             $table->string('proof')->nullable();
             $table->enum('status', ['pending', 'progress', 'done'])->default('progress');
-            $table->date('date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            // $table->date('date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('date')->useCurrent();
             $table->date('done')->nullable();
             $table->text('information')->nullable();
 
