@@ -129,6 +129,10 @@
                                     <li><a href="{{ route('web.report') }}"><i
                                                 class="fa fa-bar-chart-o green_color"></i><span>Laporan</span></a>
                                     </li>
+
+                                    <li><a href="{{route ('web.customer.verif') }}"><i
+                                        class="fa fa-users orange_color"></i><span>Pelanggan <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">1</span> </span></a>
+                                    </li>
                                 @endcan
 
                             </ul>

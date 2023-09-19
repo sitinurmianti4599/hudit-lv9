@@ -107,13 +107,13 @@ function confirmSubmitEdit(event) {
     event.preventDefault(); // Mencegah tindakan submit langsung dilakukan
 
     Swal.fire({
-        title: 'Upadate Data?',
+        title: 'Update Data?',
         text: '',
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Upadate',
+        confirmButtonText: 'Update',
         cancelButtonText: 'Kembali'
     }).then((result) => {
         if (result.isConfirmed) {
@@ -142,4 +142,42 @@ function previewImage(){
         imgPreview.src= oFRevent.target.result;
     }
 
+}
+
+function confirmSubmitPC(event) {
+    event.preventDefault(); // Mencegah tindakan submit langsung dilakukan
+
+    Swal.fire({
+        title: 'Kirim Data',
+        text: '',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Kirim',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            submitFormPC(); // Memanggil fungsi untuk submit form
+        }
+    });
+}
+
+function submitFormPC() {
+    // document.querySelector('form').submit(); // Submit form
+    document.getElementById('updPC').submit(); // Submit form untuk tindakan
+    // if (success) {
+    //     setTimeout(() => {
+    //         location.assign(redirect)
+    //     }, 2000);
+    //     showSuccessMessage('Data Dikirim, Harap Tunggu Konfirmasi ADMIN :)'); // Menampilkan pesan sukses
+
+    // }
+    // if (failed) {
+    //     showFailedMessage('Data Gagal Dikirim.'); // Menampilkan pesan gagal
+    // }
+    // setTimeout(() => {
+    //         location.assign(redirect)
+    //     }, 200000);
+    showSuccessMessage('Data Dikirim, Harap Tunggu Konfirmasi ADMIN :)'); // Menampilkan pesan sukses
 }

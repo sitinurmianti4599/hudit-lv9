@@ -42,6 +42,9 @@
 
     <!-- Custom Theme Scripts -->
     <script src="/assets/js/custom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/assets/js/myscript.js"></script>
+
       
 </body>
 </html>

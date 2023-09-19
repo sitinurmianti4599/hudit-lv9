@@ -40,6 +40,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/pelanggan/{customer}', 'CustomerController@update')->name('web.customer.update');
     Route::delete('/pelanggan/{customer}', 'CustomerController@destroy')->name('web.customer.destroy');
 
+    // baru
+    Route::post('/daftarpelanggan', 'CustomerController@storecus')->name('web.customer.storecus');
+    Route::get('/pelangganverif', 'CustomerController@verif')->name('web.customer.verif');
+
+
+
+
     Route::get('/submission/{submission}/edit', 'SubmissionController@edit')->name('web.submission.edit');
     Route::patch('/submission/{submission}', 'SubmissionController@update')->name('web.submission.update');
 

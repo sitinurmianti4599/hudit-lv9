@@ -131,7 +131,7 @@
                                                     </td>
                                                     <td>
                                                         @if($submission->proof_name == !null)
-                                                        <center><span class="docm"><img src="{{$submission->proof_url}}" alt="{{$submission->proof_name}}"></span></center>
+                                                        <center><span class="docm"><img src="{{$submission->proof_url}}" alt="dokumentasi"></span></center>
                                                         @elseif ($submission->proof_name == null)
                                                         <center><span class="docm">null</span></center>
                                                         @endif

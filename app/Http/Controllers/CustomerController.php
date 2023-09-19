@@ -85,4 +85,33 @@ class CustomerController extends Controller
 
         return to_route('web.customer.index', ['service_type' => $customer->service_type_id]);
     }
+
+    // baru untuk halaman cek - daftar 
+    public function storecus(StoreCustomerRequest $request)
+    {
+        $data = $request->validated();
+        /** @var Customer */
+        $customer = Customer::create($data);
+        return to_route('web.track.check');
+    }
+
+    public function verif(Request $request)
+    {
+        $query = Customer::query();
+        $service_type_id = $request->query('service_type');
+        if ($service_type_id) {
+            $query = $query->where('service_type_id', $service_type_id);
+        }
+        if (auth()->user()->role->position == 'person_responsible') {
+            $user = auth()->user();
+            $query = $query->whereNot('status', 'done');
+            $query = $query->with('submissions.file')->whereHas("submissions.file", function ($builder) use ($user) {
+                $builder->where('user_id', $user->id);
+            });
+        }
+        return view('verifpelanggan', [
+            'service_type' => ServiceType::find($service_type_id),
+            'customers' => $query->get(),
+        ]);
+    }
 }
