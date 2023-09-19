@@ -51,6 +51,9 @@ class Submission extends Model
         'customer_id',
         'file_id',
     ];
+    protected $casts = [
+        'date' => 'datetime:Y-m-d',
+    ];
 
     public function setProofAttribute($value)
     {
