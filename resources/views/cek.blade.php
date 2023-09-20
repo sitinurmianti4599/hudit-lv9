@@ -28,14 +28,14 @@
 
             <a href="#newservice" class="fs-4 text-white fw-800 mt-5">Ingin Memesan Layanan <b>Hukum</b> Baru?</a>
 
-           
-            
+
+
         <br><br>
         <h2 id="newservice" class="">Silahkan Isi Form Layanan <b>Hukum</b> Anda</h2>
         <div class="col-md-6 col-sm-12 mt-2 p-2 bg-light rounded" >
             <div class="x_panel me-2 " style="background:url(assets/images/pattern_h.png)!important; ">
                 <div class="x_content" >
-                    <form class="form "  action="{{ route('web.customer.storecus') }}" method="POST"
+                    <form class="form "  action="{{ route('web.customer_verification.store') }}" method="POST"
                         enctype="multipart/form-data" id="updPC">
                         @csrf
                         <div class="clear-fix"></div>
@@ -69,7 +69,7 @@
                                     value="{{ old('email') }}" required>
                                     <label for="floatingInput">Email</label>
                                 </div>
-                            
+
                                 @error('email')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -88,7 +88,7 @@
                                     value="{{ old('address') }}" required>
                                     <label for="floatingInput">Alamat</label>
                                 </div>
-                            
+
                                 @error('address')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -125,7 +125,7 @@
                                     value="{{ old('telp') }}" required>
                                     <label for="floatingInput">No. WA</label>
                                 </div>
-                            
+
                                 @error('telp')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -154,7 +154,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>  
+                            </div>
                         </div> --}}
                         <div class="col-md-12 field  form-group">
                          <div class="col-md-8 col-sm-6 ">
@@ -216,7 +216,7 @@
                     <br>
                 </div>
             </div>
-        
+
     </div>
 
     </center>

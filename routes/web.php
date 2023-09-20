@@ -31,8 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile/edit', 'AuthController@profile_update')->name('web.profile.update');
     Route::get('/logout', 'AuthController@logout_perfom')->name('web.logout.perform');
 
-    Route::get('/pelanggan', 'CustomerController@index')->name('web.customer.index');
     Route::get('/pelayanan', 'CustomerController@service')->name('web.customer.service');
+    Route::get('/pelanggan', 'CustomerController@index')->name('web.customer.index');
     Route::get('/pelanggan/buat', 'CustomerController@create')->name('web.customer.create');
     Route::get('/pelanggan/{customer}', 'CustomerController@show')->name('web.customer.show');
     Route::get('/pelanggan/{customer}/edit', 'CustomerController@edit')->name('web.customer.edit');
@@ -41,11 +41,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/pelanggan/{customer}', 'CustomerController@destroy')->name('web.customer.destroy');
 
     // baru
-    Route::post('/daftarpelanggan', 'CustomerController@storecus')->name('web.customer.storecus');
-    Route::get('/pelangganverif', 'CustomerController@verif')->name('web.customer.verif');
-
-
-
+    Route::get('/pelangganverif', 'CustomerVerificationController@index')->name('web.customer_verification.index');
+    Route::post('/daftarpelanggan', 'CustomerVerificationController@store')->name('web.customer_verification.store');
+    Route::patch('/pelangganverif/{customer_verification}', 'CustomerVerificationController@verified')->name('web.customer_verification.verified');
+    Route::delete('/pelangganverif/{customer_verification}', 'CustomerVerificationController@destroy')->name('web.customer_verification.destroy');
 
     Route::get('/submission/{submission}/edit', 'SubmissionController@edit')->name('web.submission.edit');
     Route::patch('/submission/{submission}', 'SubmissionController@update')->name('web.submission.update');

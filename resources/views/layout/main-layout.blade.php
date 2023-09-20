@@ -61,18 +61,21 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix mt-2">
                         <div class="profile_pic user_img p-1 mb-3">
-                        @if(auth()->user()->photo == !null )
-                        <img src="{{ auth()->user()->photo_url }}" alt="{{auth()->user()->photo_name}}" class="img-circle img-fluid p-0 mt-3 ms-1" style="width:55px!important; height:55px!important; ">
-                        @elseif (auth()->user()->photo == null)
-                        <img src="/assets/images/user.png" alt="..."class="rounded-circle img-responsive profile_img w-50 mt-4 ms-4">
-                        @endif
-                          </div>
+                            @if (auth()->user()->photo == !null)
+                                <img src="{{ auth()->user()->photo_url }}" alt="{{ auth()->user()->photo_name }}"
+                                    class="img-circle img-fluid p-0 mt-3 ms-1"
+                                    style="width:55px!important; height:55px!important; ">
+                            @elseif (auth()->user()->photo == null)
+                                <img src="/assets/images/user.png"
+                                    alt="..."class="rounded-circle img-responsive profile_img w-50 mt-4 ms-4">
+                            @endif
+                        </div>
                         <div class="profile_info user_info">
                             <h6>{{ auth()->user()->fullname }}</h6>
                             <p>
-                                @if(auth()->user()->role->position == "person_responsible")
+                                @if (auth()->user()->role->position == 'person_responsible')
                                     Penanggung Jawab
-                                @elseif(auth()->user()->role->position == "administrator")
+                                @elseif(auth()->user()->role->position == 'administrator')
                                     Administrator
                                 @endif
                                 <!-- {{ auth()->user()->role->position }} -->
@@ -88,8 +91,8 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu ">
                         <div class="menu_section">
                             <ul class="nav side-menu">
-                                <li><a href="{{ route('web.dashboard') }}"><i
-                                            class="fa fa-dashboard yellow_color"></i> Dashboard</a>
+                                <li><a href="{{ route('web.dashboard') }}"><i class="fa fa-dashboard yellow_color"></i>
+                                        Dashboard</a>
                                 </li>
                                 <li class="{{ url()->full() == route('web.customer.service') ? 'active' : '' }}">
                                     <a href="{{ route('web.customer.service') }}" data-click-prevent="false">
@@ -112,26 +115,32 @@
                                 </li>
                                 @can('data_master_show', auth()->user())
                                     <!-- <li><a href="{{ route('web.data_master.index') }}"><i
-                                                class="fa fa-table purple_color2"></i> Data Master</a>
-                                    </li> -->
-                                            @php
-                                                $link1 = route('web.data_master.showakun');
-                                                $link2 = route('web.data_master.showlayanan');
-                                                $link3 = route('web.data_master.showberkas');
-                                            @endphp
-                                    <li style="border:none;"><a><i class="fa fa-table purple_color2"></i>Data Master <span class="fa fa-chevron-down"></span></a>
+                                                    class="fa fa-table purple_color2"></i> Data Master</a>
+                                        </li> -->
+                                    @php
+                                        $link1 = route('web.data_master.showakun');
+                                        $link2 = route('web.data_master.showlayanan');
+                                        $link3 = route('web.data_master.showberkas');
+                                    @endphp
+                                    <li style="border:none;"><a><i class="fa fa-table purple_color2"></i>Data Master <span
+                                                class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                        <li class="{{ url()->full() == $link1 ? 'active' : '' }}" ><a href="{{ $link1 }}">Data Akun</a></li>
-                                        <li class="{{ url()->full() == $link2 ? 'active' : '' }}"><a href="{{ $link2 }}">Data Layanan</a></li>
-                                        <li class="{{ url()->full() == $link3 ? 'active' : '' }}"><a href="{{ $link3 }}">Data Berkas</a></li>
+                                            <li class="{{ url()->full() == $link1 ? 'active' : '' }}"><a
+                                                    href="{{ $link1 }}">Data Akun</a></li>
+                                            <li class="{{ url()->full() == $link2 ? 'active' : '' }}"><a
+                                                    href="{{ $link2 }}">Data Layanan</a></li>
+                                            <li class="{{ url()->full() == $link3 ? 'active' : '' }}"><a
+                                                    href="{{ $link3 }}">Data Berkas</a></li>
                                         </ul>
-                                    </li>   
+                                    </li>
                                     <li><a href="{{ route('web.report') }}"><i
                                                 class="fa fa-bar-chart-o green_color"></i><span>Laporan</span></a>
                                     </li>
 
-                                    <li><a href="{{route ('web.customer.verif') }}"><i
-                                        class="fa fa-users orange_color"></i><span>Pelanggan <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">1</span> </span></a>
+                                    <li><a href="{{ route('web.customer_verification.index') }}"><i
+                                                class="fa fa-users orange_color"></i><span>Pelanggan <span
+                                                    class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">{{ App\Models\CustomerVerification::count() }}</span>
+                                            </span></a>
                                     </li>
                                 @endcan
 
@@ -154,10 +163,11 @@
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false"
                                     style="color: #fff;">
-                                    @if(auth()->user()->photo == !null )
-                                    <img src="{{ auth()->user()->photo_url }}" alt="{{auth()->user()->photo_name}}">
+                                    @if (auth()->user()->photo == !null)
+                                        <img src="{{ auth()->user()->photo_url }}"
+                                            alt="{{ auth()->user()->photo_name }}">
                                     @elseif (auth()->user()->photo == null)
-                                    <img src="/assets/images/user.png" alt="...">
+                                        <img src="/assets/images/user.png" alt="...">
                                     @endif
 
                                     <b style="color: #fff;">
@@ -169,7 +179,8 @@
                                     aria-labelledby="navbarDropdown" style="background:rgba(1, 2, 22, 0.863); ">
                                     <a class="dropdown-item text-light fw-bold"
                                         href="{{ route('web.profile.show') }}"> Profile</a>
-                                    <a class="dropdown-item text-light fw-bold" href="#" onclick="showConfirmDialog(event)">
+                                    <a class="dropdown-item text-light fw-bold" href="#"
+                                        onclick="showConfirmDialog(event)">
                                         <i class="fa fa-sign-out pull-right"></i> Log Out
                                     </a>
                                 </div>
@@ -237,33 +248,31 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
     </script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-
-
-function showConfirmDialog(event) {
-event.preventDefault(); // Mencegah tindakan logout langsung dilakukan
-Swal.fire({
-    title: 'Konfirmasi Logout',
-    text: 'Anda yakin ingin keluar?',
-    icon: 'question',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Keluar',
-    cancelButtonText: 'Batal'
-}).then((result) => {
-    if (result.isConfirmed) {
-        window.location.href = "{{route('web.logout.perform')}}";
-    } else {
-        // Tindakan logout dibatalkan
-        // Tidak ada tindakan yang perlu dilakukan.
-    }
-});
-}
-</script>
-@yield('post_script')
+        function showConfirmDialog(event) {
+            event.preventDefault(); // Mencegah tindakan logout langsung dilakukan
+            Swal.fire({
+                title: 'Konfirmasi Logout',
+                text: 'Anda yakin ingin keluar?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Keluar',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "{{ route('web.logout.perform') }}";
+                } else {
+                    // Tindakan logout dibatalkan
+                    // Tidak ada tindakan yang perlu dilakukan.
+                }
+            });
+        }
+    </script>
+    @yield('post_script')
 </body>
 
 </html>

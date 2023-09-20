@@ -18,7 +18,7 @@ class Customer extends Model
         parent::boot();
         static::creating(function (Customer $customer) {
             $service_type = Service::find($customer->service_id)->type;
-            $customer->registration = "{$service_type->code}-". Str::random(6);
+            $customer->registration = "{$service_type->code}-" . Str::random(6);
             $customer->service_type_id = $service_type->id;
         });
         static::created(function (Customer $customer) {
@@ -31,11 +31,10 @@ class Customer extends Model
                 ]);
             }
         });
-        // static::updating(function (Customer $customer) {
-        //     /** @var Customer */
-        //     $old = Customer::find($customer->id);
-        //     if ($old->id == $customer->id) return;
-        // });
+        static::updating(function (Customer $customer) {
+            /** @var Customer */
+            $old = Customer::find($customer->id);
+        });
     }
 
     protected $fillable = [
@@ -45,6 +44,7 @@ class Customer extends Model
         'address',
         'job',
         'telp',
+        'email',
         'progress',
         'status',
         'order_date',
