@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Customer;
+use App\Models\Submission;
+use App\Observers\CustomerObserver;
+use App\Observers\SubmissionObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -21,6 +25,16 @@ class EventServiceProvider extends ServiceProvider
     ];
 
     /**
+     * The model observers for your application.
+     *
+     * @var array
+     */
+    protected $observers = [
+        Customer::class => [CustomerObserver::class],
+        Submission::class => [SubmissionObserver::class],
+    ];
+
+    /**
      * Register any events for your application.
      *
      * @return void
@@ -28,5 +42,15 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+    }
+
+    /**
+     * Determine if events and listeners should be automatically discovered.
+     *
+     * @return bool
+     */
+    public function shouldDiscoverEvents()
+    {
+        return true;
     }
 }

@@ -1,5 +1,9 @@
 <?php
 
+use App\Mail\CustomerStatusChanged;
+use App\Mail\CustomerVerificated;
+use App\Models\Customer;
+use App\Models\CustomerVerification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,4 +75,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/form-berkas/{file}', 'FileController@edit')->name('web.file.edit');
     Route::patch('/form-berkas/{file}', 'FileController@update')->name('web.file.update');
     Route::delete('/form-berkas/{file}', 'FileController@destroy')->name('web.file.destroy');
+
+    Route::get('/mailable/customer-verificated', function () {
+        $c = Customer::first();
+
+        return new CustomerVerificated($c);
+    });
+    Route::get('/mailable/customer-status-changed', function () {
+        $c = Customer::first();
+
+        return new CustomerStatusChanged($c);
+    });
 });

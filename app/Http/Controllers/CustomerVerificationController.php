@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CustomerVerificated;
 use App\Http\Requests\StoreCustomerVerificationRequest;
 use App\Http\Requests\UpdateCustomerVerificationRequest;
 use App\Models\Customer;
@@ -48,6 +49,7 @@ class CustomerVerificationController extends Controller
         /** @var Customer */
         $customer = Customer::create($customer_verification->toArray());
         $customer_verification->delete();
+        CustomerVerificated::dispatch($customer_verification, $customer);
         return to_route('web.customer.index', ['service_type' => $customer->service_type_id]);
     }
 }

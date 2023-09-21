@@ -53,7 +53,7 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                             <div class="col-md-12 field  form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Nama PJ</label>
                                 <div class="col-md-6 col-sm-6">
@@ -67,7 +67,7 @@
                             </label>
                             <div class="col-md-6 col-sm-6">
                                 <input type="date" id="date" name="date"
-                                    value="{{ old('date', $submission->date) }}" required @class([
+                                    value="{{ old('date', date('Y-m-d', strtotime($submission->date))) }}" required @class([
                                         'form-control',
                                         'is-valid' => session()->has('date') && !$errors->has('date'),
                                         'is-invalid' => $errors->has('date'),
@@ -126,16 +126,16 @@
                                  @endif
                                 <input class="form-control" type="file" name="proof" id="dokmen" onchange="previewImage()" />
                             </div>
-                            
+
                         </div>
 
                         <div class="col-md-12 field  form-group">
                             <!-- <label class="col-form-label col-md-3 col-sm-3  label-align"></label>
                             <div class="col-md-6 col-sm-6">
                               @if($submission->proof_name == !null)
-                                <span class="docm"><img src="{{$submission->proof_url}}" alt="{{$submission->proof_name}}"></span>  
+                                <span class="docm"><img src="{{$submission->proof_url}}" alt="{{$submission->proof_name}}"></span>
                                 @elseif ($submission->proof_name == null)
-                                <span></span>  
+                                <span></span>
                                 @endif
                             </div> -->
                             <div class="form-group">

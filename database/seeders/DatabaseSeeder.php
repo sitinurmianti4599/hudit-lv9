@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Customer;
+use App\Models\CustomerVerification;
 use App\Models\File;
 use App\Models\Role;
 use App\Models\Service;
@@ -109,6 +110,15 @@ class DatabaseSeeder extends Seeder
             'service_type_id' => $service_khpr->id,
         ]);
         $service_3->files()->attach($sk->id);
+
+        CustomerVerification::factory()
+            ->state(new Sequence(
+                ['service_id' => $service_1->id,],
+                ['service_id' => $service_2->id,],
+                ['service_id' => $service_3->id,],
+            ))
+            ->count(30)
+            ->create();
 
         Customer::factory()
             ->state(new Sequence(

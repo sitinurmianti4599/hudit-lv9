@@ -16,7 +16,7 @@
                         <li><a href="{{ route('web.customer.edit', ['customer' => $customer]) }}"
                                 class="btn btn-info p-2 fw-bold text-light">Edit</a></li>
                         <li>
-                           
+
                             <form class="contents" action="{{ route('web.customer.destroy', ['customer' => $customer]) }}"
                                 method="post" enctype="multipart/form-data" id="deleteForm">
                                 @csrf

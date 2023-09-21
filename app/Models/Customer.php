@@ -13,30 +13,6 @@ class Customer extends Model
 {
     use HasFactory, HasUuids;
 
-    protected static function booted(): void
-    {
-        parent::boot();
-        static::creating(function (Customer $customer) {
-            $service_type = Service::find($customer->service_id)->type;
-            $customer->registration = "{$service_type->code}-" . Str::random(6);
-            $customer->service_type_id = $service_type->id;
-        });
-        static::created(function (Customer $customer) {
-            /** @var Service */
-            $service = Service::find($customer->service_id);
-            foreach ($service->files()->get() as $file) {
-                Submission::create([
-                    'customer_id' => $customer->id,
-                    'file_id' => $file->id,
-                ]);
-            }
-        });
-        static::updating(function (Customer $customer) {
-            /** @var Customer */
-            $old = Customer::find($customer->id);
-        });
-    }
-
     protected $fillable = [
         // 'registration',
         'photo',
