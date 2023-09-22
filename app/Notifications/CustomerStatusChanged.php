@@ -39,7 +39,7 @@ class CustomerStatusChanged extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', WhatsappChannel::class];
     }
 
     /**
@@ -51,6 +51,19 @@ class CustomerStatusChanged extends Notification
     public function toMail($notifiable)
     {
         return (new MailCustomerStatusChanged($this->customer))
+            ->to($this->customer);
+    }
+
+    /**
+     * Get the whatsapp representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \App\Notifications\WhatsappMessage
+     */
+    public function toWhatsapp($notifiable)
+    {
+        return (new WhatsappMessage())
+            ->content("Customer Status Changed\nRegistration: {$this->customer->registration}\nStatus: {$this->customer->status}")
             ->to($this->customer);
     }
 

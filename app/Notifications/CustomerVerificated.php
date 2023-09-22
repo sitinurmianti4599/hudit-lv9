@@ -49,7 +49,7 @@ class CustomerVerificated extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', WhatsappChannel::class];
     }
 
     /**
@@ -61,6 +61,19 @@ class CustomerVerificated extends Notification
     public function toMail($notifiable)
     {
         return (new MailCustomerVerificated($this->customer))
+            ->to($this->customer_verification);
+    }
+
+    /**
+     * Get the whatsapp representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \App\Notifications\WhatsappMessage
+     */
+    public function toWhatsapp($notifiable)
+    {
+        return (new WhatsappMessage())
+            ->content("Customer Verificated\nRegistration: {$this->customer->registration}")
             ->to($this->customer_verification);
     }
 
