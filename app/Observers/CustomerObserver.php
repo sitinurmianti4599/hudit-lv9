@@ -27,14 +27,14 @@ class CustomerObserver
             ]);
         }
     }
-    public function updating(Customer $customer)
-    {
-        /** @var Customer */
-        $old = Customer::find($customer->id);
-        if ($customer->status != $old->status) {
-            CustomerStatusChanged::dispatch($customer);
-        }
-    }
+    // public function updating(Customer $customer)
+    // {
+    //     /** @var Customer */
+    //     $old = Customer::find($customer->id);
+    //     if ($customer->status != $old->status) {
+    //         CustomerStatusChanged::dispatch($customer);
+    //     }
+    // }
     public function updated(Customer $customer)
     {
         //

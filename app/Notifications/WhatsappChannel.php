@@ -23,6 +23,6 @@ class WhatsappChannel
                 'body' => $message->body,
             ]
         );
-        info("whatsapp response", ['status' => $response->status]);
+        info("whatsapp", ['from' => "whatsapp:$message->sender", 'to' => "whatsapp:$message->recipient", 'status' => $response->status]);
     }
 }
