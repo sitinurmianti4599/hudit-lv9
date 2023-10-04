@@ -50,7 +50,7 @@
                                             <td class=" ">{{ $customer->name }}</td>
                                             <td class=" ">{{ $customer->registration }}</td>
                                             <td class=" ">{{ $customer->service->name }}</td>
-                                            <td class=" ">{{ $customer->order_date }}</td>
+                                            <td class=" ">{{ date('d F Y', strtotime($customer->order_date))  }}</td>
                                             <td class=" ">
                                                 <div class="progress" role="progressbar" aria-label="Animated striped example"
                                                     aria-valuenow="{{ $customer->progress }}" aria-valuemin="0"

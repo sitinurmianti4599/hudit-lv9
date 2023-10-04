@@ -63,7 +63,7 @@
                             <tr>
                                 <th>Tgl Order</th>
                                 <th>:</th>
-                                <td>{{ date('d M Y', strtotime($customer->order_date)) }}</td>
+                                <td>{{ date('d F Y', strtotime($customer->order_date)) }}</td>
 
                                 <th>Estimasi Penyelesaian</th>
                                 <th>:</th>

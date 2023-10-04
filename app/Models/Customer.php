@@ -29,7 +29,7 @@ class Customer extends Model
         'service_type_id',
     ];
     protected $casts = [
-        'order_date' => 'datetime:Y-m-d',
+        'order_date' => 'datetime:d-F-Y',
     ];
 
     public function service()
