@@ -26,6 +26,7 @@ class UpdateCustomerRequest extends FormRequest
         return [
             'photo' => 'nullable|image|max:20480',
             'name' => 'required|string',
+            'email' => 'required|string|email',
             'address' => 'required|string',
             'job' => 'required|string',
             'telp' => 'required|string',

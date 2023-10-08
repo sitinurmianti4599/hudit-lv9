@@ -75,6 +75,7 @@ class CustomerController extends Controller
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
         $data = $request->validated();
+        // dd($data);
         $customer->update($data);
         return to_route('web.customer.show', ['customer' => $customer]);
     }
