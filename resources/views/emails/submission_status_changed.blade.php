@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Submission Status Changed</title>
+    <title>Status Berkas</title>
 </head>
 <body>
     <div>
-        Registration: {{ $submission->customer->registration }}
-    </div>
-    <div>
-        Submission: {{ $submission->file->name }}
-    </div>
-    <div>
-        Status: {{ $submission->status }}
-    </div>
-    <div>
-        You can check <a href="{{ route('web.track.check') }}">here</a>
+        Kepada Pelanggan Terhormat, <b>{{ $submission->customer->name }}.</b><br>
+        Kami ingin memberitahu Anda tentang perkembangan terbaru terkait layanan jasa <b>{{ $submission->customer->service->name }} </b> 
+        pada PT. Hukum Digital yang Anda gunakan, sebagai berikut : <br><br>
+        Kode Registration : <b>{{ $submission->customer->registration }}</b><br>
+        Nama Berkas : <b>{{ $submission->file->name }}</b><br>
+        Status Berkas: <b>{{ $submission->status }} </b> <br><br>
+       
+        Untuk informasi lainnya, <br>
+        Silahkan Check Detail dan Progress layanan anda <a href="http://hudit.bladerlaiga.my.id/check">Disini.</a><br>
+        Masukkan kode Registration: <b>{{ $submission->customer->registration }}</b> <br><br>
+
+        Salam hangat, <br>
+        [PT. Hukum Digital Indonesia]
     </div>
 </body>
 </html>

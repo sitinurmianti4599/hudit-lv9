@@ -40,7 +40,7 @@ class CustomerStatusChanged extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Customer Status Changed',
+            subject: 'Pemberitahuan Layanan Selesai',
         );
     }
 

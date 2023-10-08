@@ -40,7 +40,7 @@ class SubmissionStatusChanged extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Submission Status Changed',
+            subject: 'Update Status Berkas',
         );
     }
 

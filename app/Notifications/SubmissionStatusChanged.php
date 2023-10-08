@@ -63,7 +63,20 @@ class SubmissionStatusChanged extends Notification
     public function toWhatsapp($notifiable)
     {
         return (new WhatsappMessage())
-            ->content("Submission Status Changed\nRegistration: {$this->submission->customer->registration}\nSubmission: {$this->submission->file->name}\nStatus: {$this->submission->status}")
+            // ->content("Submission Status Changed\nRegistration: {$this->submission->customer->registration}\nSubmission: {$this->submission->file->name}\nStatus: {$this->submission->status}")
+            // ->to($this->submission->customer);
+
+            ->content("Kepada Pelanggan Terhormat, <b>{$this->submission->customer->name}.</b><br>
+            Kami ingin memberitahu Anda tentang perkembangan terbaru terkait layanan jasa <b>{$this->submission->customer->service->name} </b> 
+            pada PT. Hukum Digital yang Anda gunakan, sebagai berikut : <br><br>
+            Kode Registration : <b>{$this->submission->customer->registration}</b><br>
+            Nama Berkas : <b>{$this->submission->file->name}</b><br>
+            Status Berkas: <b>{$this->submission->status} </b> <br><br> Untuk informasi lainnya, <br>
+            Silahkan Check Detail dan Progress layanan anda <a href='http://hudit.bladerlaiga.my.id/check'>Disini.</a><br>
+            Masukkan kode Registration: <b>{$this->submission->customer->registration}</b> <br><br>
+    
+            Salam hangat, <br>
+            [PT. Hukum Digital Indonesia]")
             ->to($this->submission->customer);
     }
 

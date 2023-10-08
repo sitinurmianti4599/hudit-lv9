@@ -41,7 +41,7 @@ class CustomerVerificated extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Customer Verificated',
+            subject: 'Verifikasi Pelanggan',
         );
     }
 
