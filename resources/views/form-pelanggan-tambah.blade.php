@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 field  form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="telp">No. Hp.</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="telp">No. WA</label>
                             <div class="col-md-6 col-sm-6">
                                 <input @class([
                                     'form-control',
@@ -76,6 +76,24 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-12 field  form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="email">Email</label>
+                            <div class="col-md-6 col-sm-6">
+                                <input @class([
+                                    'form-control',
+                                    'is-valid' => session()->has('email') && !$errors->has('email'),
+                                    'is-invalid' => $errors->has('email'),
+                                    ]) type="email" id="email" name="email"
+                                    value="{{ old('email') }}" required>
+
+                                @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        
                         {{-- <div class="col-md-12 field  form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="service_type_id">Jenis
                                 Layanan</label>
@@ -100,8 +118,7 @@
                             </div>
                         </div> --}}
                         <div class="col-md-12 field  form-group">
-                            {{-- yang tampil adalah list layanan dari jenis layanan yang dipilih contoh dibawah jenis
-                            layanan yang di pilih itu pendirian badan usaha --}}
+                          
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="service_id">Layanan</label>
                             <div class="col-md-6 col-sm-6">
                                 <select id="service_id" name="service_id" required @class([

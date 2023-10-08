@@ -79,6 +79,24 @@
                             </div>
                         </div> 
                         <div class="col-md-12 field  form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="email">Email</label>
+                            <div class="col-md-6 col-sm-6">
+                                <input @class([
+                                    'form-control',
+                                    'is-valid' => session()->has('email') && !$errors->has('email'),
+                                    'is-invalid' => $errors->has('email'),
+                                    ]) type="email" id="email" name="email"
+                                    value="{{ old('email', $customer->email ) }}" required>
+                                </div>
+
+                                @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12 field  form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="service_id">Layanan</label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control" type="text" value="{{$customer->service->name }}"

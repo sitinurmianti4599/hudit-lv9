@@ -88,6 +88,7 @@ function showSuccessMessage(message) {
         // showConfirmButton: false,
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'OK',
+        
     });
 }
 
@@ -166,18 +167,6 @@ function confirmSubmitPC(event) {
 function submitFormPC() {
     // document.querySelector('form').submit(); // Submit form
     document.getElementById('updPC').submit(); // Submit form untuk tindakan
-    // if (success) {
-    //     setTimeout(() => {
-    //         location.assign(redirect)
-    //     }, 2000);
-    //     showSuccessMessage('Data Dikirim, Harap Tunggu Konfirmasi ADMIN :)'); // Menampilkan pesan sukses
-
-    // }
-    // if (failed) {
-    //     showFailedMessage('Data Gagal Dikirim.'); // Menampilkan pesan gagal
-    // }
-    // setTimeout(() => {
-    //         location.assign(redirect)
-    //     }, 200000);
+  
     showSuccessMessage('Data Dikirim, Harap Tunggu Konfirmasi ADMIN :)'); // Menampilkan pesan sukses
 }
