@@ -18,6 +18,7 @@
         Untuk informasi lainnya, <br>
         Silahkan Check Detail dan Progress layanan anda <a href="http://hudit.bladerlaiga.my.id/check">Disini.</a><br>
         Masukkan kode Registration: <b>{{ $submission->customer->registration }}</b> <br><br>
+        Jangan teruskan atau berikan kode ini kepada siapa pun.<br>
 
         Salam hangat, <br>
         [PT. Hukum Digital Indonesia]
