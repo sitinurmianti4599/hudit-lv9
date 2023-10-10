@@ -25,7 +25,7 @@ class SubmissionObserver
         $customer->progress = round(($submissions->where('status', 'done')->count() / $submissions->count()) * 100);
         $customer->status = $customer->progress == 100 ? "done" : "progress";
         if ($customer->status == 'done') {
-            $customer->done_date = now();
+            $customer->done_date = now()->format('Y-m-d');
             $copy = $customer->toArray();
             $copy["service"] = $customer->service->name;
             $copy["service_type"] = $customer->service_type->name;

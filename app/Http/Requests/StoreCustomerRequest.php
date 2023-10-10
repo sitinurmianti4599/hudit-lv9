@@ -32,7 +32,7 @@ class StoreCustomerRequest extends FormRequest
             'telp' => 'required|string',
             'progress' => 'nullable|integer|min:0|max:100',
             'status' => 'nullable|in:pending,progress,done',
-            'order_date' => 'required|date',
+            'order_date' => 'nullable|date',
             'done_date' => 'nullable|date',
             'service_id' => 'nullable|uuid|exists:services,id',
             // 'service_type_id' => 'nullable|image|size:4096',
