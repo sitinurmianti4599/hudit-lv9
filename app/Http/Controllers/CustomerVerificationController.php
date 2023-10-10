@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CustomerRejected;
 use App\Events\CustomerVerificated;
 use App\Http\Requests\StoreCustomerVerificationRequest;
 use App\Http\Requests\UpdateCustomerVerificationRequest;
@@ -42,6 +43,7 @@ class CustomerVerificationController extends Controller
     public function destroy(CustomerVerification $customer_verification)
     {
         $customer_verification->delete();
+        CustomerRejected::dispatch($customer_verification);
         return to_route('web.customer_verification.index');
     }
     public function verified(CustomerVerification $customer_verification)
