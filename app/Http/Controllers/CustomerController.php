@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 use App\Events\CustomerVerificated;
 use App\Models\CustomerVerification;
- 
+
 
 class CustomerController extends Controller
 {
@@ -60,11 +60,10 @@ class CustomerController extends Controller
         $data = $request->validated();
         /** @var Customer */
         $customer = Customer::create($data);
-        $customer_verification = CustomerVerification::create($data);
-        $customer_verification->delete();
+        $customer_verification = new CustomerVerification($data);
         CustomerVerificated::dispatch($customer_verification, $customer);
         return to_route('web.customer.index', ['service_type' => $customer->service_type_id]);
-        
+
     }
     public function show(Customer $customer)
     {

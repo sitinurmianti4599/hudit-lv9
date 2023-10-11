@@ -2,6 +2,8 @@
 
 namespace App\Observers;
 
+use App\Events\CustomerStatusChanged;
+use App\Events\SubmissionStatusChanged;
 use App\Models\Customer;
 use App\Models\Report;
 use App\Models\Submission;
@@ -17,6 +19,7 @@ class SubmissionObserver
         if ($submission->status != 'done') {
             $submission->done = null;
         }
+        $submission_old = Submission::find($submission->id);
         /** @var Customer */
         $customer = Customer::find($submission->customer_id);
         /** @var Collection */
@@ -24,12 +27,16 @@ class SubmissionObserver
         $submissions->push($submission);
         $customer->progress = round(($submissions->where('status', 'done')->count() / $submissions->count()) * 100);
         $customer->status = $customer->progress == 100 ? "done" : "progress";
+        if ($customer->status != 'done' && $submission_old->status != $submission->status) {
+            SubmissionStatusChanged::dispatch($submission);
+        }
         if ($customer->status == 'done') {
             $customer->done_date = now()->format('Y-m-d');
             $copy = $customer->toArray();
             $copy["service"] = $customer->service->name;
             $copy["service_type"] = $customer->service_type->name;
             Report::create($copy);
+            CustomerStatusChanged::dispatch($customer);
         } else {
             $customer->done_date = null;
         }

@@ -30,11 +30,7 @@ class SubmissionController extends Controller
     public function update(UpdateSubmissionRequest $request, Submission $submission)
     {
         $data = $request->validated();
-        $status_changed = isset($data['status']) && $data['status'] != $submission->status;
         $submission->update($data);
-        if ($status_changed) {
-            SubmissionStatusChanged::dispatch($submission);
-        }
         return to_route('web.customer.show', ['customer' => $submission->customer]);
     }
     public function destroy(Submission $submission)
