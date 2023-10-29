@@ -85,7 +85,7 @@
                             </label>
                             <div class="col-md-6 col-sm-6">
                                 <input type="date" id="done" name="done"
-                                    value="{{ old('done', date('Y-m-d', strtotime($submission->done))) }}" @class([
+                                    value="{{ old('done', date('Y-m-d', strtotime($submission->done?$submission->done:now()))) }}" @class([
                                         'form-control',
                                         'is-valid' => session()->has('done') && !$errors->has('done'),
                                         'is-invalid' => $errors->has('done'),

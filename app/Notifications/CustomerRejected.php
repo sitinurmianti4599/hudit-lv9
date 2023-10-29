@@ -53,6 +53,7 @@ class CustomerRejected extends Notification
     public function toMail($notifiable)
     {
         return (new Mailable)
+            ->subject('Permohonan Ditolak')
             ->view('emails.customer_rejected', ['customer' => $this->customer_verification])
             ->to($this->customer_verification);
     }
@@ -66,8 +67,15 @@ class CustomerRejected extends Notification
     public function toWhatsapp($notifiable)
     {
         return (new WhatsappMessage())
-            ->content("{$this->customer_verification->name}")
-            ->to($this->customer_verification);
+            ->content("Kepada Pelanggan Terhormat, *{$this->customer_verification->name}*.
+            \nMohon maaf, Permohonan permintaan untuk :  
+Layanan jasa : {$this->customer_verification->service->name} 
+Jenis Layanan : {$this->customer_verification->service->type->name}
+            \nYang anda ajukan pada PT. Hukum Digital \n*DITOLAK*
+            \nSetelah dilakukan pengecekan ada beberapa informasi  yang  tidak  valid. Untuk informasi selanjutnya, silahkan hubungi admin kami melalui WhatsApp api.whatsapp.com/send?phone=082399535262   
+            \nSalam hangat, 
+[PT. Hukum Digital Indonesia]")
+            ->to($this->customer_verification);            
     }
 
     /**

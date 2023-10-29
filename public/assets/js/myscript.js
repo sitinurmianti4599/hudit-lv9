@@ -159,14 +159,18 @@ function confirmSubmitPC(event) {
         cancelButtonText: 'Batal'
     }).then((result) => {
         if (result.isConfirmed) {
+    
             submitFormPC(); // Memanggil fungsi untuk submit form
         }
     });
 }
 
 function submitFormPC() {
+    showSuccessMessage('Data Dikirim, Harap Tunggu Konfirmasi ADMIN :)'); // Menampilkan pesan sukses        
+    setTimeout(() => {
+        document.getElementById('updPC').submit(); // Submit form untuk tindakan
+        
+    }, 2000);
     // document.querySelector('form').submit(); // Submit form
-    document.getElementById('updPC').submit(); // Submit form untuk tindakan
   
-    showSuccessMessage('Data Dikirim, Harap Tunggu Konfirmasi ADMIN :)'); // Menampilkan pesan sukses
 }

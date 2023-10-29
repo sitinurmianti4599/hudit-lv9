@@ -75,10 +75,9 @@ class CustomerVerificated extends Notification
         return (new WhatsappMessage())
             // ->content("Customer Verificated\nRegistration: {$this->customer->registration}")
             // ->to($this->customer_verification);
-            ->content("Kepada Pelanggan Terhormat, <b>{$this->customer->name}.</b><br>\nData pemesanan layanan jasa <b>{$this->customer->service->name}</b> pada PT. Hukum Digital Anda telah berhasil diverifikasi.\nSilahkan Check Detail dan Progress layanan anda <a href='http://hudit.bladerlaiga.my.id/check'>Disini.</a><br> Masukkan kode Registration: <b>{$this->customer->registration}</b> <br><br> Jika ada pertanyaan tambahan atau perubahan yang perlu Anda sampaikan, jangan ragu untuk menghubungi admin kami melalui WhatsApp 082399535262.<br>
-                <br>Terima kasih atas kepercayaan Anda kepada kami. Kami berharap dapat memberikan layanan terbaik kepada Anda.<br><br>
-                Salam hangat, <br>
-                [PT. Hukum Digital Indonesia]")
+            ->content("Kepada Pelanggan Terhormat, *{$this->customer->name}*.\nData pemesanan layanan jasa *{$this->customer->service->name}* pada PT. Hukum Digital Anda telah berhasil diverifikasi.\n\nSilahkan Check Detail dan Progress layanan anda hudit.bladerlaiga.my.id/check  \nMasukkan kode Registration: *{$this->customer->registration}* \n\nJika ada pertanyaan tambahan atau perubahan yang perlu Anda sampaikan, jangan ragu untuk menghubungi admin kami melalui WhatsApp 082399535262.
+                \nTerima kasih atas kepercayaan Anda kepada kami. Kami berharap dapat memberikan layanan terbaik kepada Anda.
+                \nSalam hangat,\n[PT. Hukum Digital Indonesia]")
                 ->to($this->customer_verification);
 
     }

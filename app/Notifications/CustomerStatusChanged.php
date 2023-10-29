@@ -66,24 +66,22 @@ class CustomerStatusChanged extends Notification
             // ->content("Customer Status Changed\nRegistration: {$this->customer->registration}\nStatus: {$this->customer->status}")
             // ->to($this->customer);
 
-            ->content("Kepada Pelanggan Terhormat, <b>{$this->customer->name}.</b><br>
-            Kami senang memberitahu Anda bahwa layanan jasa <b>{$this->customer->service->name} </b>
-            pada PT. Hukum Digital yang Anda gunakan telah <b>SELESAI</b>, silahkan datang ke kantor untuk proses penyerahan dan peneyelesaian layanan.
-            Tim kami telah bekerja keras untuk memastikan bahwa Anda mendapatkan hasil terbaik dan kami yakin Anda akan puas dengan hasilnya.<br>
-            Berikut adalah beberapa detail terkait selesainya layanan Anda : <br><br>
+            ->content("Kepada Pelanggan Terhormat, *{$this->customer->name}*.
+            \nKami senang memberitahu Anda bahwa layanan jasa *{$this->customer->service->name}*
+            pada PT. Hukum Digital yang Anda gunakan telah *SELESAI*, silahkan datang ke kantor untuk proses penyerahan dan peneyelesaian layanan.
+            Tim kami telah bekerja keras untuk memastikan bahwa Anda mendapatkan hasil terbaik dan kami yakin Anda akan puas dengan hasilnya.
+            \n\nBerikut adalah beberapa detail terkait selesainya layanan Anda :
+            \nNama Pelanggan : *{$this->customer->name}*
+            \nNama Layanan : *{$this->customer->service->name}*
+            \nKode Registration : *{$this->customer->registration}*
+            \nJenis Layanan : *{$this->customer->service->type->name}*
+            \nTgl Order : *{$this->customer->order_date}*
+            \nTgl Selesai : *{$this->customer->done_date}*
 
-            Nama Pelanggan : <b>{$this->customer->name} </b><br>
-            Nama Layanan : <b>{$this->customer->service->name}</b> <br>
-            Kode Registration : <b>{$this->customer->registration}</b><br>
-            Jenis Layanan : <b>{$this->customer->service->type->name}</b> <br>
-            Tgl Order : <b>{$this->customer->order_date}</b> <br>
-            Tgl Selesai : <b>{$this->customer->done_date}</b> <br><br>
-
-            Kami ingin mengucapkan terima kasih atas kepercayaan Anda kepada kami. Kami berharap Anda merasa puas dengan layanan kami. <br><br>
-
-            Silahkan Check Detail dan Progress layanan anda <a href='http://hudit.bladerlaiga.my.id/check'>Disini.</a><br>
-            Masukkan kode Registration: <b>{$this->customer->registration}</b> <br><br>
-            Untuk informasi lengkapnya, Silahkan Kunjungi Kantor PT. Hukum Digital Indonesia.<br>")
+            \n\nKami ingin mengucapkan terima kasih atas kepercayaan Anda kepada kami. Kami berharap Anda merasa puas dengan layanan kami.             Silahkan Check Detail dan Progress layanan anda <a href='http://hudit.bladerlaiga.my.id/check'>Disini.</a><br>
+            \nMasukkan kode Registration: *{$this->customer->registration}*
+            \nUntuk informasi lengkapnya, Silahkan Kunjungi Kantor PT. Hukum Digital Indonesia.
+            \n\nSalam hangat,\n[PT. Hukum Digital Indonesia]")
             ->to($this->customer);
     }
 
